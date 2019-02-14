@@ -26,17 +26,20 @@ $(BUILD): $(OBJS)
 	$(LD) $(LFLAGS) -o $@ $^
 
 # some convnient rules
-.PHONY: clean copy run
+.PHONY: clean copy run runarg
 
 # the file to analyze, in which $(RUNFILE) is defined
-#include Makefile.runfile
+include Makefile.runfile
 
 # flags to run xmt
 #RUNFLAGS := $(RUNFILE)
 
+run: $(BUILD)
+	$(BUILD) $(RUNFILE)
+
 # run xmt with arguments
 # $(RUN) is given in command line like: make run RUN=t1
-run: $(BUILD)
+runarg: $(BUILD)
 	$(BUILD) $(TESTS_DIR)/$(RUN)
 
 # clean the project
