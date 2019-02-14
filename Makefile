@@ -1,24 +1,45 @@
-CC = gcc
+# build paths
 SRC_DIR := ./src
-BUILD_DIR ?= ./build
-FLAGS ?= -m32
+INC_DIR := ./include
+OBJ_DIR := ./build/obj
+BUILD_DIR := ./build
+TESTS_DIR := ./tests
+BUILD := $(BUILD_DIR)/xmt
 
+# build options
+CC = gcc
+LD = gcc
+CFLAGS ?= -m32 -I $(INC_DIR)
+LFLAGS ?= -m32 -O2
+
+# build components
 SRCS := $(wildcard $(SRC_DIR)/*.c)
-BUILD := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%)
+OBJS := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-all: $(BUILD)
-
-$(BUILD_DIR)/%: src/%.c
+# compile each code file into objects
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
-	$(CC) $(FLAGS) -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $<
 
-.PHONY: clean copy
+# link all objects to executable
+$(BUILD): $(OBJS)
+	$(LD) $(LFLAGS) -o $@ $^
 
+# some convnient rules
+.PHONY: clean copy run
+
+# the file to analyze, in which $(RUNFILE) is defined
+#include Makefile.runfile
+
+# flags to run xmt
+#RUNFLAGS := $(RUNFILE)
+
+# run xmt with arguments
+# $(RUN) is given in command line like: make run RUN=t1
+run: $(BUILD)
+	$(BUILD) $(TESTS_DIR)/$(RUN)
+
+# clean the project
 clean:
 	rm -rf build/*
-
-copy:
-	@mkdir -p build/
-	cp ./tests/t1 build/
-	cp ./tests/t2 build/
 

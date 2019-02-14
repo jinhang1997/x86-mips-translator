@@ -1,0 +1,2 @@
+
+RUNFILE := $(TESTS_DIR)/t1
