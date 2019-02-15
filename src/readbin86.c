@@ -1,11 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdint.h>
-#include <elf.h>
-#include "debug.h"
+#include "common.h"
 
-FILE *fp; /* ELF file */
+FILE *fp_x86elf_in; /* ELF file to read */
 Elf32_Ehdr elf_header; /* ELF header */
 Elf32_Shdr *sh_list = NULL; /* section headers array */
 Elf32_Sym *sym_list = NULL; /* symbol table array */
@@ -77,7 +72,7 @@ void read_elf_header()
   char magic[4] = {0x7f, 0x45, 0x4c, 0x46};
   
   // read and print elf headers
-  fread(&elf_header, sizeof(Elf32_Ehdr), 1, fp);
+  fread(&elf_header, sizeof(Elf32_Ehdr), 1, fp_x86elf_in);
   for (i = 0; i < 4; ++i)
   {  
     if (elf_header.e_ident[i] != magic[i])
@@ -105,7 +100,7 @@ void print_elf_header()
 void read_section_headers()
 {
   // read section headers
-  if (fseek(fp, elf_header.e_shoff, SEEK_SET) != 0)
+  if (fseek(fp_x86elf_in, elf_header.e_shoff, SEEK_SET) != 0)
   {
     error(3, NULL);
   }
@@ -114,10 +109,10 @@ void read_section_headers()
   {
     error(3, NULL);
   }
-  fread(sh_list, sizeof(Elf32_Shdr) * elf_header.e_shnum, 1, fp);
+  fread(sh_list, sizeof(Elf32_Shdr) * elf_header.e_shnum, 1, fp_x86elf_in);
 
   // read names of sections
-  if (fseek(fp, sh_list[elf_header.e_shstrndx].sh_offset, SEEK_SET) != 0)
+  if (fseek(fp_x86elf_in, sh_list[elf_header.e_shstrndx].sh_offset, SEEK_SET) != 0)
   {
     error(3, NULL);
   }
@@ -126,7 +121,7 @@ void read_section_headers()
   {
     error(3, NULL);
   }
-  fread(shstrtab, sizeof(char), sh_list[elf_header.e_shstrndx].sh_size, fp);
+  fread(shstrtab, sizeof(char), sh_list[elf_header.e_shstrndx].sh_size, fp_x86elf_in);
 }
 
 void print_section_headers()
@@ -180,7 +175,7 @@ void read_symbol_table()
   }
 
   // read symbol table
-  if (fseek(fp, shent_symtab->sh_offset, SEEK_SET) != 0)
+  if (fseek(fp_x86elf_in, shent_symtab->sh_offset, SEEK_SET) != 0)
   {
     error(3, NULL);
   }
@@ -189,10 +184,10 @@ void read_symbol_table()
   {
     error(3, NULL);
   }
-  fread(sym_list, shent_symtab->sh_size, 1, fp);
+  fread(sym_list, shent_symtab->sh_size, 1, fp_x86elf_in);
 
   // read names of symbols
-  if (fseek(fp, shent_strtab->sh_offset, SEEK_SET) != 0)
+  if (fseek(fp_x86elf_in, shent_strtab->sh_offset, SEEK_SET) != 0)
   {
     error(3, NULL);
   }
@@ -201,12 +196,13 @@ void read_symbol_table()
   {
     error(3, NULL);
   }
-  fread(strtab, shent_strtab->sh_size, 1, fp);
+  fread(strtab, shent_strtab->sh_size, 1, fp_x86elf_in);
 }
 
 void print_symbol_table()
 {
   int i, num, ndx;
+
   num = shent_symtab->sh_size / sizeof(Elf32_Sym);
   printf("Symbol table '.symtab' contains %d entries:\n", num);
   printf("   %3s: %8s %5s %-8s %3s %s\n", "Num", "Value", "Size", "Type", "Ndx", "Name");
@@ -229,19 +225,14 @@ void print_symbol_table()
   putchar('\n');
 }
 
-int main(int argc, char const *argv[])
+int readbin86(char *elf_x86_name)
 {
-  if (argc < 2)
+  fp_x86elf_in = fopen(elf_x86_name, "r");
+  if (NULL == fp_x86elf_in)
   {
-    error(1, NULL);
+    error(2, elf_x86_name);
   }
-
-  fp = fopen(argv[1], "r");
-  if (NULL == fp)
-  {
-    error(2, argv[1]);
-  }
-  printf("File: %s\n", argv[1]);
+  printf("File: %s\n", elf_x86_name);
 
   read_elf_header();
   print_elf_header();
@@ -252,7 +243,7 @@ int main(int argc, char const *argv[])
   read_symbol_table();
   print_symbol_table();
 
-  fclose(fp);
+  fclose(fp_x86elf_in);
 
   return 0;
 }

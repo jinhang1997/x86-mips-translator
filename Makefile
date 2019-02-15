@@ -18,12 +18,15 @@ OBJS := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 # compile each code file into objects
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@echo + CC $<
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c -o $@ $<
+	@$(CC) $(CFLAGS) -c -o $@ $<
 
 # link all objects to executable
 $(BUILD): $(OBJS)
-	$(LD) $(LFLAGS) -o $@ $^
+	@echo + LD $@
+	@mkdir -p $(dir $@)
+	@$(LD) $(LFLAGS) -o $@ $^
 
 # some convnient rules
 .PHONY: clean copy run runarg
