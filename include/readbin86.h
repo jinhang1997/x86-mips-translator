@@ -23,5 +23,6 @@ Elf32_Shdr *get_shent_by_name(char const *target);
 void read_symbol_table();
 void print_symbol_table();
 int readbin86(char *elf_x86_name);
+Elf32_Sym *get_syment_by_func_name(char *func_name);
 
 #endif
