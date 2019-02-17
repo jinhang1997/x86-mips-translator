@@ -33,25 +33,6 @@ void error(int errid, char const *word)
   exit(errid);
 }
 
-void dump_func(char *file_name, char *func_name)
-{
-  Elf32_Sym *sym_ent = get_syment_by_func_name(func_name);
-  Log("%s: %08x %d %08x %d %s",
-    file_name,
-    sym_ent->st_value,
-    sym_ent->st_size,
-    ELF32_ST_TYPE(sym_ent->st_info),
-    sym_ent->st_shndx,
-    strtab + sym_ent->st_name
-  );
-  call_objdump(
-    file_name, 
-    func_name, 
-    sym_ent->st_value, 
-    sym_ent->st_value + sym_ent->st_size
-  );
-}
-
 int main(int argc, char *argv[])
 {
   if (argc < 2)
@@ -62,7 +43,9 @@ int main(int argc, char *argv[])
   readbin86(argv[1]);
 
   dump_func(argv[1], "main");
+  scan_file("./dumps/main.dump");
   dump_func(argv[1], "transfer");
+  scan_file("./dumps/transfer.dump");
   //clean_dump_dir();
 
   return 0;
