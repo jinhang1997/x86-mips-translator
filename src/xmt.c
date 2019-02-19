@@ -40,12 +40,9 @@ int main(int argc, char *argv[])
     error(1, NULL);
   }
 
-  readbin86(argv[1]);
+  readbin86_main(argv[1]);
 
-  dump_func(argv[1], "main");
-  scan_file("./dumps/main.dump");
-  dump_func(argv[1], "transfer");
-  scan_file("./dumps/transfer.dump");
+  dump_main(argv[1]);
   //clean_dump_dir();
 
   return 0;

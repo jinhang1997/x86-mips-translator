@@ -195,7 +195,23 @@ void print_symbol_table()
   putchar('\n');
 }
 
-int readbin86(char *elf_x86_name)
+Elf32_Sym *get_syment_by_func_name(char *func_name)
+{
+  int i, num;
+
+  num = shent_symtab->sh_size / sizeof(Elf32_Sym);
+  for (i = 0; i < num; ++i)
+  {
+    if (!strcmp(func_name, strtab + sym_list[i].st_name))
+    {
+      return &sym_list[i];
+    }
+  }
+
+  return NULL;
+}
+
+int readbin86_main(char *elf_x86_name)
 {
   fp_x86elf_in = fopen(elf_x86_name, "r");
   if (NULL == fp_x86elf_in)
@@ -216,20 +232,4 @@ int readbin86(char *elf_x86_name)
   fclose(fp_x86elf_in);
 
   return 0;
-}
-
-Elf32_Sym *get_syment_by_func_name(char *func_name)
-{
-  int i, num;
-
-  num = shent_symtab->sh_size / sizeof(Elf32_Sym);
-  for (i = 0; i < num; ++i)
-  {
-    if (!strcmp(func_name, strtab + sym_list[i].st_name))
-    {
-      return &sym_list[i];
-    }
-  }
-
-  return NULL;
 }

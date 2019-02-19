@@ -54,3 +54,4 @@ dkms.conf
 #build directory
 build/
 dumps/
+tests/
