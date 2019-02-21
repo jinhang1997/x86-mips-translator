@@ -91,7 +91,7 @@ void tar_getaddr(const char *s,char *addr_reg)
   {
     if(backet[0]=='%')//base or other reg  
     {
-      int b_len=strlen(backet);
+      //int b_len=strlen(backet);
       get_reg_val(backet,&success,addr_reg);
       assert(success);
       if(!is_offset_exist)
@@ -201,11 +201,24 @@ void end_output()
   fclose(fp_out);
 }
 
+void function_header(char *func_name)
+{
+  fprintf(fp_out, "  .globl %s\n", func_name);
+  fprintf(fp_out, "  .ent %s\n", func_name);
+  fprintf(fp_out, "  .type %s, @function\n", func_name);
+  fprintf(fp_out, "%s:\n", func_name);
+}
+
+void function_footer(char *func_name)
+{
+  fprintf(fp_out, "  .end %s\n", func_name);
+}
+
 void trans_output(char *label, char *instr, char *argus, char *extra)
 {
   char instr_stripped[16], suffix[4];
   char str_argu[64], mode_type[4];
-  char *p_str = NULL, *p_argus[3] = { NULL };
+  char *p_argus[3] = { NULL };
   int instr_len = strlen(instr), count_argu = 0;
   int i, flag;
 

@@ -54,8 +54,9 @@ void read_elf_header()
 
 void print_elf_header()
 {
+  int i;
   printf("Identification: ");
-  for (int i = 0; i < EI_NIDENT; ++i)
+  for (i = 0; i < EI_NIDENT; ++i)
   {
     printf("%02x ", elf_header.e_ident[i]);
   }
@@ -96,14 +97,14 @@ void read_section_headers()
 
 void print_section_headers()
 {
-  int sh_str_idx;
+  int sh_str_idx, i;
   if (!sh_list)
   {
     error(3, NULL);
   }
   printf("Section headers:\n");
   printf("  [%2s] %-20s %-14s %-8s %-8s %-8s\n","Nr", "Name", "Type", "Address", "Offset", "Size");
-  for (int i = 0; i < elf_header.e_shnum; ++i)
+  for (i = 0; i < elf_header.e_shnum; ++i)
   {
     sh_str_idx = (sh_list[i].sh_type >= 20) ? 20 : sh_list[i].sh_type;
     printf("  [%2d] %-20s %-14s %08x %08x %08x\n",

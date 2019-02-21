@@ -36,6 +36,8 @@ void display_reg();
 int get_reg_index(const char *x86_reg);
 void init_output(char *of_name);
 void end_output();
+void function_header(char *func_name);
+void function_footer(char *func_name);
 void trans_output(char *label, char *instr, char *argus, char *extra);
 Oprand_Type get_opnd_type(char *str);
 

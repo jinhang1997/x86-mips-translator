@@ -122,7 +122,6 @@ void scan_file(char *file_name)
   uint32_t func_addr;
   char instr[8], argus[32], extra[32];
   FILE *fp_func_dump = NULL;
-  char *tok;
 
   Log("scanning file: %s", file_name);
   fp_func_dump = fopen(file_name, "r");
@@ -206,7 +205,9 @@ void dump_main(char *elf_x86_name)
     dump_func(elf_x86_name, func_name_buf);
     sprintf(dump_file_name, "./dumps/%s.dump", func_name_buf);
     Log("%s to scan", dump_file_name);
+    function_header(func_name_buf);
     scan_file(dump_file_name);
+    function_footer(func_name_buf);
   }
   end_output();
 }

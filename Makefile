@@ -9,8 +9,8 @@ BUILD := $(BUILD_DIR)/xmt
 # build options
 CC = gcc
 LD = gcc
-CFLAGS ?= -m32 -I $(INC_DIR)
-LFLAGS ?= -m32 -O2
+CFLAGS ?= -I $(INC_DIR)
+LFLAGS ?= -O2
 
 # build components
 SRCS := $(wildcard $(SRC_DIR)/*.c)
