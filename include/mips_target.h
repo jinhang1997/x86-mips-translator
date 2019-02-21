@@ -32,6 +32,10 @@ static inline void tar_sll(const char *rd,const char* rs, const char* rt)
 {
   fprintf(fp_out, "  sll  %s,%s,%s\n",rd,rs,rt); 
 }
+ static inline void tar_jr(const char* rs)
+{
+  fprintf(fp_out, "  jr  %s\n",rs); 
+}
  
 static inline void tar_load(const char* rt,const char* offset,const char* rs ,int size)
 {

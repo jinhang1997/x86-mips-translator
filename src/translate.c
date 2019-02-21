@@ -5,12 +5,12 @@
 FILE *fp_out = NULL;
 const Instr_Table_Entry x86_instr_table[] = {
   { "push", trans_push },
-  { "mov", trans_mov },/*
-  { "pop", },
-  { "ret", },*/
+  { "mov", trans_mov },
+  { "pop",trans_pop },
+  { "ret",trans_ret },
 };
 const char *x86_regs_name[] = { "%eax", "%ecx", "%edx", "%ebx", "%esp", "%ebp", "%esi", "%edi" };
-const char *mips_regs_name[] = { "$t0", "$t1", "$t2", "$t3", "$t4", "$t5", "$t6", "$t7" };
+const char *mips_regs_name[] = { "$t0", "$t1", "$t2", "$t3", "$sp", "$t5", "$t6", "$t7" };
 const char *opnd_type_name[] = { "OPND_NONE", "OPND_REG", "OPND_IMM", "OPND_MEM" };
 const char *mode_type_name[] = { "", "r", "m", "i", "rr", "rm", "mr", "mm", "ir", "im"};
 const char *regsl[] = { "eax", "ecx", "edx", "ebx", "esp", "ebp", "esi", "edi" };
