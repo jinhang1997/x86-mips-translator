@@ -5,6 +5,31 @@ static char cmd[MAX_COMMAND_BUF];
 static char *stk_func[MAX_STACK_CAPACITY] = { NULL };
 static char linebuf[MAX_LINE_BUF];
 static int stk_func_top = 0;
+static Jump_Label list_label[MAX_LABEL_CAPACITY];
+static int jump_label_count = 0;
+static int label_number = 0;
+
+void list_label_query(uint32_t inst_addr, char *ret_label_name)
+{
+  int i;
+  for (i=0; i<jump_label_count; ++i)
+  {
+    if (list_label[i].addr == inst_addr)
+    {
+      strcpy(ret_label_name, list_label[i].label);
+    }
+  }
+}
+
+void list_label_append(uint32_t inst_addr)
+{
+  char label[16];
+  list_label[jump_label_count].addr = inst_addr;
+  sprintf(label, ".TL%d", label_number);
+  strcpy(list_label[jump_label_count].label, label);
+  ++label_number;
+  ++jump_label_count;
+}
 
 int stk_func_push(char *func_name)
 {
@@ -74,15 +99,21 @@ void dump_control(uint32_t func_addr, char *instr, char *argus, char *extra)
     {
       stk_func_push(extra);
     }
-    if (strcmp(extra, "__stack_chk_fail@plt"))
+    if (!strcmp(extra, "__stack_chk_fail@plt"))
     {
       // TODO: ignore stack overflow check
       // and output it as `nop` instead
+      trans_output(NULL, "nop", NULL, NULL);
     }
     else
     {
       // TODO: call translator to output instructions
+      trans_output(NULL, instr, argus, extra);
     }
+  }
+  else
+  {
+    trans_output(NULL, instr, argus, extra);
   }
 }
 
@@ -100,6 +131,34 @@ void scan_file(char *file_name)
     error(3, NULL);
   }
 
+  // TODO: print function header to output file
+  //
+
+  // 1st scan: record labels
+  Log("1st scan:");
+  for (;;)
+  {
+    fgets(linebuf, MAX_LINE_BUF, fp_func_dump);
+    if (feof(fp_func_dump))
+    {
+      break;
+    }
+    instr[0] = argus[0] = extra[0] = '\0';
+    sscanf(linebuf, "%x: %s %s <%s>", &func_addr, instr, argus, extra);
+    extra[strlen(extra) - 1] = '\0';
+    printf("%x - %s - %s - %s\n", func_addr, instr, argus, extra);
+    // match jmp & jcc
+    if (instr[0] == 'j')
+    {
+
+    }
+  }
+  // ready for 2nd scan
+  clearerr(fp_func_dump);
+  rewind(fp_func_dump);
+
+  // 2nd scan: translate with function recoginition
+  Log("2nd scan:");
   for (;;)
   {
     fgets(linebuf, MAX_LINE_BUF, fp_func_dump);
@@ -138,6 +197,7 @@ void dump_main(char *elf_x86_name)
 {
   char func_name_buf[64], dump_file_name[64];
 
+  init_output(elf_x86_name);
   stk_func_push("main");
   while (stk_func_top)
   {
@@ -148,8 +208,5 @@ void dump_main(char *elf_x86_name)
     Log("%s to scan", dump_file_name);
     scan_file(dump_file_name);
   }
-  //dump_func(elf_x86_name, "main");
-  //scan_file("./dumps/main.dump");
-  //dump_func(elf_x86_name, "transfer");
-  //scan_file("./dumps/transfer.dump");
+  end_output();
 }

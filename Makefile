@@ -29,7 +29,7 @@ $(BUILD): $(OBJS)
 	@$(LD) $(LFLAGS) -o $@ $^
 
 # some convnient rules
-.PHONY: clean copy run runarg
+.PHONY: clean copy run app
 
 # the file to analyze, in which $(RUNFILE) is defined
 include Makefile.runfile
@@ -41,8 +41,8 @@ run: $(BUILD)
 	$(BUILD) $(RUNFILE)
 
 # run xmt with arguments
-# $(RUN) is given in command line like: make run RUN=t1
-runarg: $(BUILD)
+# $(RUN) is given in command line like: make app RUN=t1
+app: $(BUILD)
 	$(BUILD) $(TESTS_DIR)/$(RUN)
 
 # clean the project
