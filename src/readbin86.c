@@ -1,4 +1,5 @@
 #include "common.h"
+#include "xmt.h"
 
 FILE *fp_x86elf_in; /* ELF file to read */
 Elf32_Ehdr elf_header; /* ELF header */
@@ -35,37 +36,6 @@ char *sh_type_str[] = {
   "<OTHER>",
 };
 
-void error(int errid, char const *word)
-{
-  printf("\nfatal error %d: ", errid);
-  if (errid == 1)
-  {
-    printf("no input file given.\n");
-  }
-  else if (errid == 2)
-  {
-    printf("unable to open specified file `%s'.\n", word);
-  }
-  else if (errid == 3)
-  {
-    printf("error while reading file.\n");
-  }
-  else if (errid == 4)
-  {
-    printf("not a ELF file.\n");
-  }
-  else if (errid == 5)
-  {
-    printf("analyze error: %s\n", word);
-  }
-  else
-  {
-    printf("unknown error.\n");
-  }
-
-  exit(errid);
-}
-
 void read_elf_header()
 {
   int i;
@@ -84,16 +54,17 @@ void read_elf_header()
 
 void print_elf_header()
 {
+  int i;
   printf("Identification: ");
-  for (int i = 0; i < EI_NIDENT; ++i)
+  for (i = 0; i < EI_NIDENT; ++i)
   {
     printf("%02x ", elf_header.e_ident[i]);
   }
   putchar('\n');
-  printf("Section header offset: %d (0x%08x)\n", elf_header.e_shoff, elf_header.e_shoff);
-  printf("Size of each section header: %d (0x%08x)\n", elf_header.e_shentsize, elf_header.e_shentsize);
-  printf("Number of section headers: %d (0x%08x)\n", elf_header.e_shnum, elf_header.e_shoff);
-  printf("Index of names of section headers: %d (0x%08x)\n", elf_header.e_shstrndx, elf_header.e_shstrndx);
+  printf("Section header offset: %d\n", elf_header.e_shoff);
+  printf("Size of each section header: %d\n", elf_header.e_shentsize);
+  printf("Number of section headers: %d\n", elf_header.e_shoff);
+  printf("Index of names of section headers: %d\n", elf_header.e_shstrndx);
   putchar('\n');
 }
 
@@ -126,14 +97,14 @@ void read_section_headers()
 
 void print_section_headers()
 {
-  int sh_str_idx;
+  int sh_str_idx, i;
   if (!sh_list)
   {
     error(3, NULL);
   }
   printf("Section headers:\n");
   printf("  [%2s] %-20s %-14s %-8s %-8s %-8s\n","Nr", "Name", "Type", "Address", "Offset", "Size");
-  for (int i = 0; i < elf_header.e_shnum; ++i)
+  for (i = 0; i < elf_header.e_shnum; ++i)
   {
     sh_str_idx = (sh_list[i].sh_type >= 20) ? 20 : sh_list[i].sh_type;
     printf("  [%2d] %-20s %-14s %08x %08x %08x\n",
@@ -225,7 +196,23 @@ void print_symbol_table()
   putchar('\n');
 }
 
-int readbin86(char *elf_x86_name)
+Elf32_Sym *get_syment_by_func_name(char *func_name)
+{
+  int i, num;
+
+  num = shent_symtab->sh_size / sizeof(Elf32_Sym);
+  for (i = 0; i < num; ++i)
+  {
+    if (!strcmp(func_name, strtab + sym_list[i].st_name))
+    {
+      return &sym_list[i];
+    }
+  }
+
+  return NULL;
+}
+
+int readbin86_main(char *elf_x86_name)
 {
   fp_x86elf_in = fopen(elf_x86_name, "r");
   if (NULL == fp_x86elf_in)
