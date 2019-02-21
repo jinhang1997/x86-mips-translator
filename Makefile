@@ -43,7 +43,7 @@ run: $(BUILD)
 # run xmt with arguments
 # $(RUN) is given in command line like: make app RUN=t1
 app: $(BUILD)
-	$(BUILD) $(TESTS_DIR)/$(RUN)
+	$(BUILD) $(TESTS_DIR)/$(RUN)/$(RUN)
 
 # clean the project
 clean:
