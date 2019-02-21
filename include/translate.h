@@ -20,11 +20,17 @@ enum OPND_TYPE
 
 #define MOV_TYPE_NUM 10
 
+extern FILE *fp_out;
+extern Instr_Table_Entry x86_instr_table[];
+extern char *x86_regs_name[];
+extern char *mips_regs_name[];
+extern char *opnd_type_name[];
+extern char *mode_type_name[];
+
 void init_output(char *of_name);
 void end_output();
 void trans_output(char *label, char *instr, char *argus, char *extra);
-
-void trans_push(char *mode, char *argus[]);
-void trans_push_r(char *reg);
+int get_reg_index(char *x86_reg);
+Oprand_Type get_opnd_type(char *str);
 
 #endif

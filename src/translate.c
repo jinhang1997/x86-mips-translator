@@ -1,17 +1,18 @@
 #include "common.h"
 #include "translate.h"
+#include "allinstr.h"
 
-static FILE *fp_out = NULL;
-static Instr_Table_Entry x86_instr_table[] = {
+FILE *fp_out = NULL;
+Instr_Table_Entry x86_instr_table[] = {
   {"push", trans_push},
   /*{"mov", },
   {"pop", },
   {"ret", },*/
 };
-static char *x86_regs_name[] = { "%eax", "%ecx", "%edx", "%ebx", "%esp", "%ebp", "%esi", "%edi" };
-static char *mips_regs_name[] = { "$t0", "$t1", "$t2", "$t3", "$t4", "$t5", "$t6", "$t7" };
-static char *opnd_type_name[] = { "OPND_NONE", "OPND_REG", "OPND_IMM", "OPND_MEM" };
-static char *mode_type_name[] = { "", "r", "m", "i", "rr", "rm", "mr", "mm", "ir", "im"};
+char *x86_regs_name[] = { "%eax", "%ecx", "%edx", "%ebx", "%esp", "%ebp", "%esi", "%edi" };
+char *mips_regs_name[] = { "$t0", "$t1", "$t2", "$t3", "$t4", "$t5", "$t6", "$t7" };
+char *opnd_type_name[] = { "OPND_NONE", "OPND_REG", "OPND_IMM", "OPND_MEM" };
+char *mode_type_name[] = { "", "r", "m", "i", "rr", "rm", "mr", "mm", "ir", "im"};
 
 int get_reg_index(char *x86_reg)
 {
@@ -110,18 +111,3 @@ void trans_output(char *label, char *instr, char *argus, char *extra)
 
 }
 
-void trans_push(char *mode, char *argus[])
-{
-  Log("push worker");
-  if (!strcmp(mode, "r"))
-  {
-    trans_push_r(argus[0]);
-  }
-}
-
-void trans_push_r(char *reg)
-{
-  int idx = get_reg_index(reg);
-  fprintf(fp_out, "  addi $sp,$sp,-4\n");
-  fprintf(fp_out, "  sw %s,$sp\n", mips_regs_name[idx]);
-}
