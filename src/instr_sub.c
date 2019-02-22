@@ -42,7 +42,7 @@ void trans_sub_mr(char * addr,char * reg, int size)
 {
 	char mips_subr_src[5];
 	tar_getaddr(addr,mips_subr_src);
-	tar_loadu("$t8", "0", mips_subr_src, size);
+	tar_load("$t8", "0", mips_subr_src, size);
 	int idx = get_reg_index(reg);
 	tar_sub(mips_regs_name[idx],mips_regs_name[idx],"$t8");
 }

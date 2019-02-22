@@ -91,7 +91,7 @@ void trans_mov_mr(const char *addr, const char *reg, int size)//memory to regist
   char mips_addr_src[5];
   tar_getaddr(addr,mips_addr_src);
   //get_reg_val(reg,&success,mips_reg_dest);
-  tar_loadu(mips_regs_name[get_reg_index(reg)], "0", mips_addr_src, size);
+  tar_load(mips_regs_name[get_reg_index(reg)], "0", mips_addr_src, size);
 }
 
 void trans_mov_im(const char *imm, const char *addr, int size)//imm to memory

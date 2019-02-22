@@ -37,24 +37,7 @@ void trans_add_mr(char * addr,char * reg, int size)
 {
 	char mips_addr_src[5];
 	tar_getaddr(addr,mips_addr_src);
-	tar_loadu("$t8", "0", mips_addr_src, size);
+	tar_load("$t8", "0", mips_addr_src, size);
 	int idx = get_reg_index(reg);
 	tar_add(mips_regs_name[idx],mips_regs_name[idx],"$t8");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
