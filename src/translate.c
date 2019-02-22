@@ -8,6 +8,7 @@ const Instr_Table_Entry x86_instr_table[] = {
   { "mov", trans_mov },
   { "pop",trans_pop },
   { "ret",trans_ret },
+  { "call", trans_call },
 };
 const char *x86_regs_name[] = { "%eax", "%ecx", "%edx", "%ebx", "%esp", "%ebp", "%esi", "%edi" };
 const char *mips_regs_name[] = { "$t0", "$t1", "$t2", "$t3", "$sp", "$t5", "$t6", "$t7" };
@@ -247,8 +248,11 @@ void trans_output(char *label, char *instr, char *argus, char *extra)
   }
   Log("mode_type: %s", mode_type);
   
-  // TODO: analyze extra infomation, usuallu function names
-  //
+  // TODO: analyze extra infomation, usually function names
+  if (NULL!=extra && 0!=strcmp(extra, ""))
+  {
+    p_argus[0] = extra;
+  }
   //
 
   // call working functions

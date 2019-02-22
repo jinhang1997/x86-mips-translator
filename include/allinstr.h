@@ -21,6 +21,7 @@ void trans_mov_im(const char *imm,const char *addr, int size);//imm to memory
 /* ret */
 void trans_ret(char *mode, char *argus[], char *suffix);
 
-
+/* call */
+void trans_call(char *mode, char *argus[], char *suffix);
 
 #endif

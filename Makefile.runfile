@@ -1,2 +1,2 @@
 
-RUNFILE := $(TESTS_DIR)/dummy/dummy
+RUNFILE := $(TESTS_DIR)/func_dummy/func_dummy
