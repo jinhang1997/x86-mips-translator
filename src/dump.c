@@ -9,24 +9,31 @@ static Jump_Label list_label[MAX_LABEL_CAPACITY];
 static int jump_label_count = 0;
 static int label_number = 0;
 
-void list_label_query(uint32_t inst_addr, char *ret_label_name)
+char *list_label_query(uint32_t inst_addr)
 {
   int i;
   for (i=0; i<jump_label_count; ++i)
   {
     if (list_label[i].addr == inst_addr)
     {
-      strcpy(ret_label_name, list_label[i].label);
+      //strcpy(ret_label_name, list_label[i].label);
+      return list_label[i].label;
     }
   }
+  return NULL;
 }
 
 void list_label_append(uint32_t inst_addr)
 {
   char label[16];
   list_label[jump_label_count].addr = inst_addr;
-  sprintf(label, ".TL%d", label_number);
+  sprintf(label, "$L%d", label_number);
   strcpy(list_label[jump_label_count].label, label);
+  Log(
+    "new label: %s at %x", 
+    list_label[jump_label_count].label, 
+    list_label[jump_label_count].addr
+  );
   ++label_number;
   ++jump_label_count;
 }
@@ -91,6 +98,10 @@ int clean_dump_dir()
 void dump_control(uint32_t func_addr, char *instr, char *argus, char *extra)
 {
   int func_name_len;
+  uint32_t jump_addr;
+  char *label = NULL;
+
+  label = list_label_query(func_addr);
   if (!strcmp(instr, "call"))
   {
     func_name_len = strlen(extra);
@@ -101,26 +112,33 @@ void dump_control(uint32_t func_addr, char *instr, char *argus, char *extra)
     }
     if (!strcmp(extra, "__stack_chk_fail@plt"))
     {
-      // TODO: ignore stack overflow check
+      // ignore stack overflow check
       // and output it as `nop` instead
-      trans_output(NULL, "nop", NULL, NULL);
+      trans_output(label, "nop", NULL, NULL);
     }
     else
     {
       // TODO: call translator to output instructions
-      trans_output(NULL, instr, argus, extra);
+      trans_output(label, instr, argus, extra);
     }
+  }
+  else if ('j' == instr[0])
+  {
+    sscanf(argus, "%x", &jump_addr);
+    argus = list_label_query(jump_addr);
+    trans_output(label, instr, argus, extra);
   }
   else
   {
-    trans_output(NULL, instr, argus, extra);
+    trans_output(label, instr, argus, extra);
   }
 }
 
 void scan_file(char *file_name)
 {
-  uint32_t func_addr;
+  uint32_t func_addr, jump_addr;
   char instr[8], argus[32], extra[32];
+  //char buf[32];
   FILE *fp_func_dump = NULL;
 
   Log("scanning file: %s", file_name);
@@ -149,7 +167,8 @@ void scan_file(char *file_name)
     // match jmp & jcc
     if (instr[0] == 'j')
     {
-
+      sscanf(argus, "%x", &jump_addr);
+      list_label_append(jump_addr);
     }
   }
   // ready for 2nd scan

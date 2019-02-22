@@ -5,6 +5,8 @@
 #include "readbin86.h"
 #include "translate.h"
 
+char *list_label_query(uint32_t inst_addr);
+void list_label_append(uint32_t inst_addr);
 int call_objdump(char *elf_name, char *func_name, uint32_t start_addr, uint32_t stop_addr);
 int clean_dump_dir();
 void scan_file(char *file_name);

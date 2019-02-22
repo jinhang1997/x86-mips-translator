@@ -1,0 +1,236 @@
+
+loop100:     file format elf32-tradlittlemips
+
+
+Disassembly of section .init:
+
+00400510 <_init>:
+  400510:	3c1c0002 	lui	gp,0x2
+  400514:	279c8360 	addiu	gp,gp,-31904
+  400518:	0399e021 	addu	gp,gp,t9
+  40051c:	27bdffe0 	addiu	sp,sp,-32
+  400520:	afbc0010 	sw	gp,16(sp)
+  400524:	afbf001c 	sw	ra,28(sp)
+  400528:	8f82803c 	lw	v0,-32708(gp)
+  40052c:	10400004 	beqz	v0,400540 <_init+0x30>
+  400530:	00200825 	move	at,at
+  400534:	8f99803c 	lw	t9,-32708(gp)
+  400538:	0320f809 	jalr	t9
+  40053c:	00200825 	move	at,at
+  400540:	8fbf001c 	lw	ra,28(sp)
+  400544:	03e00008 	jr	ra
+  400548:	27bd0020 	addiu	sp,sp,32
+
+Disassembly of section .text:
+
+00400550 <__start>:
+  400550:	03e00021 	move	zero,ra
+  400554:	04110001 	bal	40055c <__start+0xc>
+  400558:	00200825 	move	at,at
+  40055c:	3c1c0042 	lui	gp,0x42
+  400560:	279c8870 	addiu	gp,gp,-30608
+  400564:	0000f821 	move	ra,zero
+  400568:	8f848018 	lw	a0,-32744(gp)
+  40056c:	8fa50000 	lw	a1,0(sp)
+  400570:	27a60004 	addiu	a2,sp,4
+  400574:	2401fff8 	li	at,-8
+  400578:	03a1e824 	and	sp,sp,at
+  40057c:	27bdffe0 	addiu	sp,sp,-32
+  400580:	8f87801c 	lw	a3,-32740(gp)
+  400584:	8f888020 	lw	t0,-32736(gp)
+  400588:	afa80010 	sw	t0,16(sp)
+  40058c:	afa20014 	sw	v0,20(sp)
+  400590:	afbd0018 	sw	sp,24(sp)
+  400594:	8f998038 	lw	t9,-32712(gp)
+  400598:	0320f809 	jalr	t9
+  40059c:	00200825 	move	at,at
+
+004005a0 <hlt>:
+  4005a0:	1000ffff 	b	4005a0 <hlt>
+  4005a4:	00200825 	move	at,at
+  4005a8:	00200825 	move	at,at
+  4005ac:	00200825 	move	at,at
+
+004005b0 <deregister_tm_clones>:
+  4005b0:	3c040041 	lui	a0,0x41
+  4005b4:	3c020041 	lui	v0,0x41
+  4005b8:	24840874 	addiu	a0,a0,2164
+  4005bc:	24420877 	addiu	v0,v0,2167
+  4005c0:	00441023 	subu	v0,v0,a0
+  4005c4:	2c420007 	sltiu	v0,v0,7
+  4005c8:	14400007 	bnez	v0,4005e8 <deregister_tm_clones+0x38>
+  4005cc:	3c1c0042 	lui	gp,0x42
+  4005d0:	279c8870 	addiu	gp,gp,-30608
+  4005d4:	8f998040 	lw	t9,-32704(gp)
+  4005d8:	13200003 	beqz	t9,4005e8 <deregister_tm_clones+0x38>
+  4005dc:	00200825 	move	at,at
+  4005e0:	03200008 	jr	t9
+  4005e4:	00200825 	move	at,at
+  4005e8:	03e00008 	jr	ra
+  4005ec:	00200825 	move	at,at
+
+004005f0 <register_tm_clones>:
+  4005f0:	3c040041 	lui	a0,0x41
+  4005f4:	3c020041 	lui	v0,0x41
+  4005f8:	24840874 	addiu	a0,a0,2164
+  4005fc:	24420874 	addiu	v0,v0,2164
+  400600:	00441023 	subu	v0,v0,a0
+  400604:	00021083 	sra	v0,v0,0x2
+  400608:	00022fc2 	srl	a1,v0,0x1f
+  40060c:	00a22821 	addu	a1,a1,v0
+  400610:	00052843 	sra	a1,a1,0x1
+  400614:	10a00007 	beqz	a1,400634 <register_tm_clones+0x44>
+  400618:	3c1c0042 	lui	gp,0x42
+  40061c:	279c8870 	addiu	gp,gp,-30608
+  400620:	8f998030 	lw	t9,-32720(gp)
+  400624:	13200003 	beqz	t9,400634 <register_tm_clones+0x44>
+  400628:	00200825 	move	at,at
+  40062c:	03200008 	jr	t9
+  400630:	00200825 	move	at,at
+  400634:	03e00008 	jr	ra
+  400638:	00200825 	move	at,at
+
+0040063c <__do_global_dtors_aux>:
+  40063c:	27bdffe0 	addiu	sp,sp,-32
+  400640:	afb00018 	sw	s0,24(sp)
+  400644:	3c100041 	lui	s0,0x41
+  400648:	920208c0 	lbu	v0,2240(s0)
+  40064c:	14400005 	bnez	v0,400664 <__do_global_dtors_aux+0x28>
+  400650:	afbf001c 	sw	ra,28(sp)
+  400654:	0c10016c 	jal	4005b0 <deregister_tm_clones>
+  400658:	00200825 	move	at,at
+  40065c:	24020001 	li	v0,1
+  400660:	a20208c0 	sb	v0,2240(s0)
+  400664:	8fbf001c 	lw	ra,28(sp)
+  400668:	8fb00018 	lw	s0,24(sp)
+  40066c:	03e00008 	jr	ra
+  400670:	27bd0020 	addiu	sp,sp,32
+
+00400674 <frame_dummy>:
+  400674:	3c040041 	lui	a0,0x41
+  400678:	24840854 	addiu	a0,a0,2132
+  40067c:	8c820000 	lw	v0,0(a0)
+  400680:	14400003 	bnez	v0,400690 <frame_dummy+0x1c>
+  400684:	3c1c0042 	lui	gp,0x42
+  400688:	0810017c 	j	4005f0 <register_tm_clones>
+  40068c:	00200825 	move	at,at
+  400690:	27bdffe0 	addiu	sp,sp,-32
+  400694:	279c8870 	addiu	gp,gp,-30608
+  400698:	8f998034 	lw	t9,-32716(gp)
+  40069c:	afbf001c 	sw	ra,28(sp)
+  4006a0:	afbc0010 	sw	gp,16(sp)
+  4006a4:	13200005 	beqz	t9,4006bc <frame_dummy+0x48>
+  4006a8:	8fbf001c 	lw	ra,28(sp)
+  4006ac:	0320f809 	jalr	t9
+  4006b0:	00200825 	move	at,at
+  4006b4:	8fbc0010 	lw	gp,16(sp)
+  4006b8:	8fbf001c 	lw	ra,28(sp)
+  4006bc:	0810017c 	j	4005f0 <register_tm_clones>
+  4006c0:	27bd0020 	addiu	sp,sp,32
+  4006c4:	00200825 	move	at,at
+  4006c8:	00200825 	move	at,at
+  4006cc:	00200825 	move	at,at
+
+004006d0 <main>:
+  4006d0:	27bdffe8 	addiu	sp,sp,-24
+  4006d4:	afbe0014 	sw	s8,20(sp)
+  4006d8:	03a0f021 	move	s8,sp
+  4006dc:	afc0000c 	sw	zero,12(s8)
+  4006e0:	24020001 	li	v0,1
+  4006e4:	afc20008 	sw	v0,8(s8)
+  4006e8:	081001c3 	j	40070c <main+0x3c>
+  4006ec:	00200825 	move	at,at
+  4006f0:	8fc3000c 	lw	v1,12(s8)
+  4006f4:	8fc20008 	lw	v0,8(s8)
+  4006f8:	00621021 	addu	v0,v1,v0
+  4006fc:	afc2000c 	sw	v0,12(s8)
+  400700:	8fc20008 	lw	v0,8(s8)
+  400704:	24420001 	addiu	v0,v0,1
+  400708:	afc20008 	sw	v0,8(s8)
+  40070c:	8fc20008 	lw	v0,8(s8)
+  400710:	28420065 	slti	v0,v0,101
+  400714:	1440fff6 	bnez	v0,4006f0 <main+0x20>
+  400718:	00200825 	move	at,at
+  40071c:	8fc3000c 	lw	v1,12(s8)
+  400720:	240213ba 	li	v0,5050
+  400724:	10620004 	beq	v1,v0,400738 <main+0x68>
+  400728:	00200825 	move	at,at
+  40072c:	24020001 	li	v0,1
+  400730:	081001cf 	j	40073c <main+0x6c>
+  400734:	00200825 	move	at,at
+  400738:	00001021 	move	v0,zero
+  40073c:	03c0e821 	move	sp,s8
+  400740:	8fbe0014 	lw	s8,20(sp)
+  400744:	27bd0018 	addiu	sp,sp,24
+  400748:	03e00008 	jr	ra
+  40074c:	00200825 	move	at,at
+
+00400750 <__libc_csu_init>:
+  400750:	3c1c0002 	lui	gp,0x2
+  400754:	279c8120 	addiu	gp,gp,-32480
+  400758:	0399e021 	addu	gp,gp,t9
+  40075c:	27bdffc8 	addiu	sp,sp,-56
+  400760:	8f998024 	lw	t9,-32732(gp)
+  400764:	afbc0010 	sw	gp,16(sp)
+  400768:	afb50030 	sw	s5,48(sp)
+  40076c:	afb4002c 	sw	s4,44(sp)
+  400770:	afb30028 	sw	s3,40(sp)
+  400774:	afb20024 	sw	s2,36(sp)
+  400778:	afb10020 	sw	s1,32(sp)
+  40077c:	afbf0034 	sw	ra,52(sp)
+  400780:	afb0001c 	sw	s0,28(sp)
+  400784:	00809821 	move	s3,a0
+  400788:	00a0a021 	move	s4,a1
+  40078c:	0320f809 	jalr	t9
+  400790:	00c0a821 	move	s5,a2
+  400794:	8fbc0010 	lw	gp,16(sp)
+  400798:	8f918028 	lw	s1,-32728(gp)
+  40079c:	8f92802c 	lw	s2,-32724(gp)
+  4007a0:	02519023 	subu	s2,s2,s1
+  4007a4:	00129083 	sra	s2,s2,0x2
+  4007a8:	12400009 	beqz	s2,4007d0 <__libc_csu_init+0x80>
+  4007ac:	00008021 	move	s0,zero
+  4007b0:	8e390000 	lw	t9,0(s1)
+  4007b4:	02602021 	move	a0,s3
+  4007b8:	02802821 	move	a1,s4
+  4007bc:	02a03021 	move	a2,s5
+  4007c0:	0320f809 	jalr	t9
+  4007c4:	26100001 	addiu	s0,s0,1
+  4007c8:	1612fff9 	bne	s0,s2,4007b0 <__libc_csu_init+0x60>
+  4007cc:	26310004 	addiu	s1,s1,4
+  4007d0:	8fbf0034 	lw	ra,52(sp)
+  4007d4:	8fb50030 	lw	s5,48(sp)
+  4007d8:	8fb4002c 	lw	s4,44(sp)
+  4007dc:	8fb30028 	lw	s3,40(sp)
+  4007e0:	8fb20024 	lw	s2,36(sp)
+  4007e4:	8fb10020 	lw	s1,32(sp)
+  4007e8:	8fb0001c 	lw	s0,28(sp)
+  4007ec:	03e00008 	jr	ra
+  4007f0:	27bd0038 	addiu	sp,sp,56
+
+004007f4 <__libc_csu_fini>:
+  4007f4:	03e00008 	jr	ra
+  4007f8:	00200825 	move	at,at
+  4007fc:	00200825 	move	at,at
+
+Disassembly of section .MIPS.stubs:
+
+00400800 <_MIPS_STUBS_>:
+  400800:	8f998010 	lw	t9,-32752(gp)
+  400804:	03e07821 	move	t7,ra
+  400808:	0320f809 	jalr	t9
+  40080c:	2418000a 	li	t8,10
+	...
+
+Disassembly of section .fini:
+
+00400820 <_fini>:
+  400820:	3c1c0002 	lui	gp,0x2
+  400824:	279c8050 	addiu	gp,gp,-32688
+  400828:	0399e021 	addu	gp,gp,t9
+  40082c:	27bdffe0 	addiu	sp,sp,-32
+  400830:	afbc0010 	sw	gp,16(sp)
+  400834:	afbf001c 	sw	ra,28(sp)
+  400838:	8fbf001c 	lw	ra,28(sp)
+  40083c:	03e00008 	jr	ra
+  400840:	27bd0020 	addiu	sp,sp,32

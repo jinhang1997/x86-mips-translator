@@ -18,7 +18,7 @@ void trans_add(char *mode, char *argus[], char *suffix)
   }
   else 
   {
-  	TODO();
+  	//TODO();
   }
   
 }
