@@ -17,16 +17,33 @@ static inline void tar_movla2r(const char *s,const char *lable)
 {
   fprintf(fp_out, "  la  %s,%s\n",s,lable);
 }
-
+static inline void tar_add(const char *rd,const char* rs, const char* rt)
+{
+  fprintf(fp_out, "  add  %s,%s,%s\n",rd,rs,rt);  
+}
 static inline void tar_addu(const char *rd,const char* rs, const char* rt)
 {
   fprintf(fp_out, "  addu  %s,%s,%s\n",rd,rs,rt);  
 }
 
-static inline void tar_addi(const char *rd,const char* rs, const char* rt)
+static inline void tar_addi(const char *rt,const char* rs, const char* imm)
 {
-  fprintf(fp_out, "  addi  %s,%s,%s\n",rd,rs,rt);  
+  fprintf(fp_out, "  addi  %s,%s,%s\n",rt,rs,imm);  
 }
+
+static inline void tar_addiu(const char *rt,const char* rs, const char* imm)
+{
+  fprintf(fp_out, "  addiu  %s,%s,%s\n",rt,rs,imm);    
+}
+static inline void tar_sub(const char *rd,const char* rs, const char* rt)
+{
+	fprintf(fp_out, "  sub	%s,%s,%s\n",rd,rs,rt);	
+}
+static inline void tar_subu(const char *rd,const char* rs, const char* rt)
+{
+	fprintf(fp_out, "  subu  %s,%s,%s\n",rd,rs,rt);  
+}
+
 
 static inline void tar_sll(const char *rd,const char* rs, const char* rt)
 {
