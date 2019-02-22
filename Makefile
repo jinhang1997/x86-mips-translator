@@ -10,7 +10,7 @@ BUILD := $(BUILD_DIR)/xmt
 CC = gcc
 LD = gcc
 CFLAGS ?= -I $(INC_DIR)
-LFLAGS ?= -O2
+LFLAGS ?= -O2 -Wall -Werror
 
 # build components
 SRCS := $(wildcard $(SRC_DIR)/*.c)
