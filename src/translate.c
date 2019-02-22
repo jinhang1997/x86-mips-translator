@@ -229,7 +229,7 @@ void trans_output(char *label, char *instr, char *argus, char *extra)
   // print jump label
   if (label)
   {
-    fprintf(fp_out, "%s: ", label);
+    fprintf(fp_out, "%s:\n", label);
   }
 
   // analyze operands, prepare str_argu & mode_type
