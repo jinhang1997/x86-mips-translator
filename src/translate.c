@@ -8,13 +8,10 @@ const Instr_Table_Entry x86_instr_table[] = {
   { "mov", trans_mov },
   { "pop",trans_pop },
   { "ret",trans_ret },
-<<<<<<< HEAD
   { "call", trans_call },
-=======
   { "add",trans_add },
   { "sub",trans_sub },
-  { "leave",trans_leave}
->>>>>>> 5dc521d7bfec7b53c7de29e2b1e40a95d9c7a951
+  { "leave",trans_leave},
 };
 const char *x86_regs_name[] = { "%eax", "%ecx", "%edx", "%ebx", "%esp", "%ebp", "%esi", "%edi" };
 const char *mips_regs_name[] = { "$t0", "$t1", "$t2", "$t3", "$sp", "$t5", "$t6", "$t7" };
