@@ -6,6 +6,8 @@
 /* push */
 void trans_push(char *mode, char *argus[], char *suffix);
 void trans_push_r(char *reg);
+void trans_push_i(char *imm);
+
 /* pop */
 void trans_pop(char *mode, char *argus[], char *suffix);
 void trans_pop_r(char *reg);
@@ -23,5 +25,20 @@ void trans_ret(char *mode, char *argus[], char *suffix);
 
 /* call */
 void trans_call(char *mode, char *argus[], char *suffix);
+
+/* add */
+void trans_add(char *mode, char *argus[], char *suffix);
+void trans_add_rr(char * reg1,char * reg2);
+void trans_add_ir(char * imm,char * reg);
+void trans_add_mr(char * addr,char * reg, int size);
+
+/* sub */
+void trans_sub(char *mode, char *argus[], char *suffix);
+void trans_sub_rr(char * reg1,char * reg2);
+void trans_sub_ir(char * imm,char * reg);
+void trans_sub_mr(char * addr,char * reg, int size);
+
+/* pop */
+void trans_leave(char *mode, char *argus[], char *suffix);
 
 #endif

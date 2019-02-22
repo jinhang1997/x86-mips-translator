@@ -8,7 +8,13 @@ const Instr_Table_Entry x86_instr_table[] = {
   { "mov", trans_mov },
   { "pop",trans_pop },
   { "ret",trans_ret },
+<<<<<<< HEAD
   { "call", trans_call },
+=======
+  { "add",trans_add },
+  { "sub",trans_sub },
+  { "leave",trans_leave}
+>>>>>>> 5dc521d7bfec7b53c7de29e2b1e40a95d9c7a951
 };
 const char *x86_regs_name[] = { "%eax", "%ecx", "%edx", "%ebx", "%esp", "%ebp", "%esi", "%edi" };
 const char *mips_regs_name[] = { "$t0", "$t1", "$t2", "$t3", "$sp", "$t5", "$t6", "$t7" };
@@ -30,7 +36,7 @@ int get_size_by_suf_x86(char suf)
       return i;
     }
   }
-  return 0;
+  return 4;
 }
 
 void get_reg_val(const char *s, bool *success, char *mips_reg)
@@ -286,6 +292,7 @@ void trans_output(char *label, char *instr, char *argus, char *extra)
   strcpy(instr_stripped, instr);
   strcpy(suffix, &instr[instr_len-2]);
   instr_stripped[instr_len-2] = '\0';
+  Log("instr:%s suf:%s",instr,suffix);
   // 3st loop: search with 1 letter suffix striped, like `movz/bl`
   if (0 == flag)
   {

@@ -9,6 +9,16 @@ void trans_push(char *mode, char *argus[], char *suffix)
   {
     trans_push_r(argus[0]);
   }
+  else if (!strcmp(mode, "i"))
+  {
+    trans_push_i(argus[0]);
+  }
+}
+void trans_push_i(char *imm)
+{
+	 tar_addi("$sp", "$sp", "-4");
+	 tar_movi2r("$t8",imm);
+	 tar_store("$t8", "0", "$sp",4);
 }
 
 void trans_push_r(char *reg)
