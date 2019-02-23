@@ -153,7 +153,7 @@ void dump_control(uint32_t func_addr, char *instr, char *argus, char *extra)
   else if ('j' == instr[0])
   {
     sscanf(argus, "%x", &jump_addr);
-    argus = list_label_query(jump_addr);
+    extra = list_label_query(jump_addr);
     trans_output(label, instr, argus, extra);
   }
   else
