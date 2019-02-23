@@ -3,11 +3,39 @@
 
 static char cmd[MAX_COMMAND_BUF];
 static char *stk_func[MAX_STACK_CAPACITY] = { NULL };
+static char *func_history[MAX_FUNC_HISTORY] = { NULL };
 static char linebuf[MAX_LINE_BUF];
 static int stk_func_top = 0;
 static Jump_Label list_label[MAX_LABEL_CAPACITY];
 static int jump_label_count = 0;
 static int label_number = 0;
+static int func_history_count = 0;
+
+int func_history_query(char *func_name)
+{
+  int i;
+  for (i=0; i<func_history_count; ++i)
+  {
+    if (0 == strcmp(func_history[i], func_name))
+    {
+      return 1;
+    }
+  }
+  return 0;
+}
+
+int func_history_append(char *func_name)
+{
+  if (func_history_count == MAX_FUNC_HISTORY)
+  {
+    return 1;
+  }
+  func_history[func_history_count] = (char *)malloc(strlen(func_name) + 1);
+  strcpy(func_history[func_history_count], func_name);
+  Log("add hisrory[%d]: %s", func_history_count, func_history[func_history_count]);
+  ++func_history_count;
+  return 0;
+}
 
 char *list_label_query(uint32_t inst_addr)
 {
@@ -220,13 +248,17 @@ void dump_main(char *elf_x86_name)
   while (stk_func_top)
   {
     stk_func_pop(func_name_buf);
-    Log("%s to dump", func_name_buf);
-    dump_func(elf_x86_name, func_name_buf);
-    sprintf(dump_file_name, "./dumps/%s.dump", func_name_buf);
-    Log("%s to scan", dump_file_name);
-    function_header(func_name_buf);
-    scan_file(dump_file_name);
-    function_footer(func_name_buf);
+    if (!func_history_query(func_name_buf))
+    {
+      Log("%s to dump", func_name_buf);
+      dump_func(elf_x86_name, func_name_buf);
+      sprintf(dump_file_name, "./dumps/%s.dump", func_name_buf);
+      Log("%s to scan", dump_file_name);
+      function_header(func_name_buf);
+      scan_file(dump_file_name);
+      function_footer(func_name_buf);
+      func_history_append(func_name_buf);
+    }
   }
   end_output();
 }
