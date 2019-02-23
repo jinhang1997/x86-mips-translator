@@ -12,6 +12,13 @@ const Instr_Table_Entry x86_instr_table[] = {
   { "add",trans_add },
   { "sub",trans_sub },
   { "leave",trans_leave},
+  {	"jmp",trans_jmp},
+  { "cmp",trans_cmp},
+  {	"ja",trans_ja},{"jnbe",trans_jnbe},{"jnc",trans_jnc},{"jae",trans_jae},{"jnb",trans_jnb},
+  {	"jc",trans_jc},{"jb",trans_jb},{"jnae",trans_jnae},{"jna",trans_jna},{"jg",trans_jg},
+  {	"jnle",trans_jnle},{"jge",trans_jge},{"jnl",trans_jnl},{"jl",trans_jl},{"jnge",trans_jnge},
+  {	"jle",trans_jle},{"jng",trans_jng},{"jbe",trans_jbe},{"je",trans_je},{"jz",trans_jz},
+  {	"jne",trans_jne},{"jnz",trans_jnz},
 };
 const char *x86_regs_name[] = { "%eax", "%ecx", "%edx", "%ebx", "%esp", "%ebp", "%esi", "%edi" };
 const char *mips_regs_name[] = { "$t0", "$t1", "$t2", "$t3", "$sp", "$t5", "$t6", "$t7" };
@@ -70,6 +77,7 @@ void tar_getaddr(const char *s,char *addr_reg)
   bool success= true;
   bool is_offset_exist=false;
   char offset[15];
+  memset(offset,0x00,15);
   if(s[0]!='(')//weather there are offset? 
   is_offset_exist=true;
   
@@ -84,12 +92,14 @@ void tar_getaddr(const char *s,char *addr_reg)
       comma_count++; 
   }
   char backet[20];
+  Log("pos is: %d,len is: %d",pos,len);
   strncpy(backet,s+pos,len-pos-1);//get the strig in ()
+  backet[len-pos-1]=0;
   if(is_offset_exist)//get the strig of offset
   {
     strncpy(offset,s,pos-1);
   }
-  printf("# %s\n",backet);
+  Log("# %s\n",backet);
   char mips_reg[5];
   if(comma_count==0)
   {
@@ -289,7 +299,7 @@ void trans_output(char *label, char *instr, char *argus, char *extra)
   strcpy(instr_stripped, instr);
   strcpy(suffix, &instr[instr_len-2]);
   instr_stripped[instr_len-2] = '\0';
-  Log("instr:%s suf:%s",instr,suffix);
+  //Log("instr:%s suf:%s",instr,suffix);
   // 3st loop: search with 1 letter suffix striped, like `movz/bl`
   if (0 == flag)
   {

@@ -3,7 +3,9 @@
 #include "allinstr.h"
 void trans_add(char *mode, char *argus[], char *suffix)
 {
+	
   Log("add worker");
+  Log("suf:%s",suffix);
   if (!strcmp(mode, "rr"))
   {
     trans_add_rr(argus[0],argus[1]);
@@ -16,9 +18,17 @@ void trans_add(char *mode, char *argus[], char *suffix)
   {
   	trans_add_mr(argus[0],argus[1],get_size_by_suf_x86(suffix[0]));
   }
+  else if(!strcmp(mode, "im"))
+  {
+  	trans_add_im(argus[0],argus[1],get_size_by_suf_x86(suffix[0]));
+  }
+  else if(!strcmp(mode, "rm"))
+  {
+  	trans_add_rm(argus[0],argus[1],get_size_by_suf_x86(suffix[0]));
+  }
   else 
   {
-  	//TODO();
+  	TODO();
   }
   
 }
@@ -31,7 +41,8 @@ void trans_add_rr(char * reg1,char * reg2)
 void trans_add_ir(char * imm,char * reg)
 {
 	int idx = get_reg_index(reg);
-	tar_addi(mips_regs_name[idx],mips_regs_name[idx],imm);
+	tar_movi2r("$t8",imm);
+	tar_add(mips_regs_name[idx],mips_regs_name[idx],"$t8");
 }
 void trans_add_mr(char * addr,char * reg, int size)
 {
@@ -41,3 +52,29 @@ void trans_add_mr(char * addr,char * reg, int size)
 	int idx = get_reg_index(reg);
 	tar_add(mips_regs_name[idx],mips_regs_name[idx],"$t8");
 }
+
+void trans_add_im(char * imm,char * addr, int size)
+{
+	Log("%s",addr);
+	tar_movi2r("$t8",imm);
+	char mips_addr_src[5];
+	tar_getaddr(addr,mips_addr_src);
+	tar_load("$t4", "0", mips_addr_src, size);
+	tar_add("$t8","$t8","$t4");
+	tar_store("$t8", "0", mips_addr_src, size);
+}
+
+void trans_add_rm(char * reg,char * addr, int size)
+{
+	Log("%s",addr);
+	char mips_addr_src[5];
+	tar_getaddr(addr,mips_addr_src);
+	tar_load("$t8", "0", mips_addr_src, size);
+	int idx = get_reg_index(reg);
+	tar_add("$t8",mips_regs_name[idx],"$t8");
+	tar_store("$t8", "0", mips_addr_src, size);
+}
+
+
+
+
