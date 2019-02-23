@@ -262,6 +262,7 @@ void trans_output(char *label, char *instr, char *argus, char *extra)
   Log("mode_type: %s", mode_type);
   
   // TODO: analyze extra infomation, usually function names
+  // or offset in certain function
   if (NULL!=extra && 0!=strcmp(extra, ""))
   {
     p_argus[0] = extra;
@@ -275,6 +276,14 @@ void trans_output(char *label, char *instr, char *argus, char *extra)
   {
     if (!strcmp(x86_instr_table[i].instr, instr))
     {
+      Log(
+        "try call worker %s with %s %s %s suf: %s",
+        x86_instr_table[i].instr,
+        p_argus[0],
+        p_argus[1],
+        p_argus[2],
+        ""
+      );
       (x86_instr_table[i].worker)(mode_type, p_argus, "");
       flag = 1;
       break;
