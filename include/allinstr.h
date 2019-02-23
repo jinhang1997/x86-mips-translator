@@ -31,14 +31,66 @@ void trans_add(char *mode, char *argus[], char *suffix);
 void trans_add_rr(char * reg1,char * reg2);
 void trans_add_ir(char * imm,char * reg);
 void trans_add_mr(char * addr,char * reg, int size);
+void trans_add_im(char * imm,char * addr, int size);
+void trans_add_rm(char * imm,char * addr, int size);
+
+
 
 /* sub */
 void trans_sub(char *mode, char *argus[], char *suffix);
 void trans_sub_rr(char * reg1,char * reg2);
 void trans_sub_ir(char * imm,char * reg);
 void trans_sub_mr(char * addr,char * reg, int size);
+void trans_sub_im(char * imm,char * addr, int size);
+void trans_sub_rm(char * imm,char * addr, int size);
 
-/* pop */
+
+/* cmp */
+void trans_cmp(char *mode, char *argus[], char *suffix);
+void trans_cmp_rr(char * reg1,char * reg2);
+void trans_cmp_ir(char * imm,char * reg);
+void trans_cmp_mr(char * addr,char * reg, int size);
+void trans_cmp_im(char * imm,char * addr, int size);
+void trans_cmp_rm(char * imm,char * addr, int size);
+
+
+/* jmp */
+void trans_jmp(char *mode, char *argus[], char *suffix);
+/*leave*/
 void trans_leave(char *mode, char *argus[], char *suffix);
+
+/* jcc */
+
+void trans_ja(char *mode, char *argus[], char *suffix);
+void trans_jnbe(char *mode, char *argus[], char *suffix);
+void trans_jnc(char *mode, char *argus[], char *suffix);
+void trans_jae(char *mode, char *argus[], char *suffix);
+void trans_jnb(char *mode, char *argus[], char *suffix);
+void trans_jc(char *mode, char *argus[], char *suffix);
+void trans_jb(char *mode, char *argus[], char *suffix);
+void trans_jnae(char *mode, char *argus[], char *suffix);
+void trans_jbe(char *mode, char *argus[], char *suffix);
+void trans_jna(char *mode, char *argus[], char *suffix);
+
+
+void trans_jg(char *mode, char *argus[], char *suffix);
+void trans_jnle(char *mode, char *argus[], char *suffix);
+void trans_jge(char *mode, char *argus[], char *suffix);
+void trans_jnl(char *mode, char *argus[], char *suffix);
+void trans_jl(char *mode, char *argus[], char *suffix);
+void trans_jnge(char *mode, char *argus[], char *suffix);
+void trans_jle(char *mode, char *argus[], char *suffix);
+void trans_jng(char *mode, char *argus[], char *suffix);
+
+
+
+
+void trans_jz(char *mode, char *argus[], char *suffix);
+void trans_je(char *mode, char *argus[], char *suffix);
+void trans_jnz(char *mode, char *argus[], char *suffix);
+void trans_jne(char *mode, char *argus[], char *suffix);
+
+
+
 
 #endif
