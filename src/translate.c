@@ -18,7 +18,7 @@ const Instr_Table_Entry x86_instr_table[] = {
   {	"jc",trans_jc},{"jb",trans_jb},{"jnae",trans_jnae},{"jna",trans_jna},{"jg",trans_jg},
   {	"jnle",trans_jnle},{"jge",trans_jge},{"jnl",trans_jnl},{"jl",trans_jl},{"jnge",trans_jnge},
   {	"jle",trans_jle},{"jng",trans_jng},{"jbe",trans_jbe},{"je",trans_je},{"jz",trans_jz},
-  {	"jne",trans_jne},{"jnz",trans_jnz},
+  {	"jne",trans_jne},{"jnz",trans_jnz},{ "and",trans_and },{ "lea",trans_lea },
 };
 const char *x86_regs_name[] = { "%eax", "%ecx", "%edx", "%ebx", "%esp", "%ebp", "%esi", "%edi" };
 const char *mips_regs_name[] = { "$t0", "$t1", "$t2", "$t3", "$sp", "$t5", "$t6", "$t7" };
@@ -49,6 +49,11 @@ void get_reg_val(const char *s, bool *success, char *mips_reg)
   *success = true;
   for (i = 0; i < 8; i ++) {
     if (strcmp(regsl[i], s+1) == 0) {
+     if(i==4)
+     {
+	     strcpy(mips_reg,"$sp");
+	     return;
+     }
       mips_reg[0]='$';
       mips_reg[1]='t';
       mips_reg[2]='0'+i;

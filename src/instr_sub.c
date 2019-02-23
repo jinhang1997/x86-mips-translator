@@ -34,7 +34,7 @@ void trans_sub_rr(char * reg1,char * reg2)
 {
 	 int id1 = get_reg_index(reg1);
 	 int id2 = get_reg_index(reg2);
-	 tar_sub(mips_regs_name[id1],mips_regs_name[id1],mips_regs_name[id2]);
+	 tar_sub(mips_regs_name[id2],mips_regs_name[id2],mips_regs_name[id1]);
 }
 void trans_sub_ir(char * imm,char * reg)
 {
@@ -61,7 +61,7 @@ void trans_sub_im(char * imm,char * addr, int size)
 	char mips_addr_src[5];
 	tar_getaddr(addr,mips_addr_src);
 	tar_load("$t4", "0", mips_addr_src, size);
-	tar_sub("$t8","$t8","$t4");
+	tar_sub("$t8","$t4","$t8");
 	tar_store("$t8", "0", mips_addr_src, size);
 }
 void trans_sub_rm(char * reg,char * addr, int size)
