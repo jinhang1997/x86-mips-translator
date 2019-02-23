@@ -136,29 +136,43 @@ void dump_control(uint32_t func_addr, char *instr, char *argus, char *extra)
     Log("func push control: %s", extra);
     if (func_name_len>4 && 0!=strcmp(&extra[func_name_len-4], "@plt"))
     {
+      // functions not in `.plt` section, means user function
+      // add it to translating working stack for translation
       stk_func_push(extra);
-    }
-    if (!strcmp(extra, "__stack_chk_fail@plt"))
-    {
-      // ignore stack overflow check
-      // and output it as `nop` instead
-      trans_output(label, "nop", NULL, NULL);
+      trans_output(label, instr, argus, extra);
+      return;
     }
     else
     {
-      // TODO: call translator to output instructions
-      trans_output(label, instr, argus, extra);
+      // function ended with `@plt`, which means dynamically linked
+      // usually library functions
+      if (!strcmp(extra, "__stack_chk_fail@plt"))
+      {
+        // ignore the stack overflow check and output it as `nop` instead
+        trans_output(label, "nop", NULL, NULL);
+      }
+      else
+      {
+        // normal library functions, translate it with specially designed
+        // output worker to conform the arguments of registers
+        trans_output(label, instr, argus, extra);
+      }
+      return;
     }
   }
   else if ('j' == instr[0])
   {
+    // instructions started with `j`, includes all `jcc` instr, and `jmp`
     sscanf(argus, "%x", &jump_addr);
     extra = list_label_query(jump_addr);
     trans_output(label, instr, argus, extra);
+    return;
   }
   else
   {
+    // other instrucations
     trans_output(label, instr, argus, extra);
+    return;
   }
 }
 

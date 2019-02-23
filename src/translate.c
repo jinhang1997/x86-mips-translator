@@ -266,13 +266,13 @@ void trans_output(char *label, char *instr, char *argus, char *extra)
   }
   Log("mode_type: %s", mode_type);
   
-  // TODO: analyze extra infomation, usually function names
-  // or offset in certain function
+  // analyze extra infomation, usually function names
+  // or offset in certain function, copy them into argus[0]
+  // usually for `jmp` `jcc` and `call`
   if (NULL!=extra && 0!=strcmp(extra, ""))
   {
     p_argus[0] = extra;
   }
-  //
 
   // call working functions
   flag = 0;
