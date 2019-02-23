@@ -7,6 +7,8 @@
 void trans_push(char *mode, char *argus[], char *suffix);
 void trans_push_r(char *reg);
 void trans_push_i(char *imm);
+void trans_push_m(char *addr,int size);
+
 
 /* pop */
 void trans_pop(char *mode, char *argus[], char *suffix);
@@ -20,6 +22,12 @@ void trans_mov_la2r(const char *lable,const char *reg);// ->la reg,lable
 void trans_mov_rm( const char *reg ,const char *addr, int size );//register to memory
 void trans_mov_mr(const char *addr,const char *reg ,int size);//memory to register
 void trans_mov_im(const char *imm,const char *addr, int size);//imm to memory
+
+/* lea */
+void trans_lea(char *mode, char *argus[], char *suffix);
+void trans_lea_mr(const char *addr,const char *reg ,int size);//memory to register
+
+
 /* ret */
 void trans_ret(char *mode, char *argus[], char *suffix);
 
@@ -52,6 +60,15 @@ void trans_cmp_ir(char * imm,char * reg);
 void trans_cmp_mr(char * addr,char * reg, int size);
 void trans_cmp_im(char * imm,char * addr, int size);
 void trans_cmp_rm(char * imm,char * addr, int size);
+
+/* and */
+void trans_and(char *mode, char *argus[], char *suffix);
+void trans_and_rr(char * reg1,char * reg2);
+void trans_and_ir(char * imm,char * reg);
+void trans_and_mr(char * addr,char * reg, int size);
+void trans_and_im(char * imm,char * addr, int size);
+void trans_and_rm(char * imm,char * addr, int size);
+
 
 
 /* jmp */

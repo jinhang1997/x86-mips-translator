@@ -43,6 +43,14 @@ static inline void tar_subu(const char *rd,const char* rs, const char* rt)
 {
 	fprintf(fp_out, "  subu  %s,%s,%s\n",rd,rs,rt);  
 }
+static inline void tar_and(const char *rd,const char* rs, const char* rt)
+{
+	fprintf(fp_out, "  and	%s,%s,%s\n",rd,rs,rt);	
+}
+static inline void tar_andi(const char *rt,const char* rs, const char* imm)
+{
+	fprintf(fp_out, "  andi  %s,%s,%s\n",rt,rs,imm);  
+}
 
 
 static inline void tar_sll(const char *rd,const char* rs, const char* rt)
@@ -82,7 +90,7 @@ static inline void tar_sll(const char *rd,const char* rs, const char* rt)
 }	
 	static inline void tar_bne(const char* rs,const char* rt,const char* offset)
 {
-	  fprintf(fp_out, "  bne  %s,%s\n",rs,rt,offset); 
+	  fprintf(fp_out, "  bne  %s,%s,%s\n",rs,rt,offset); 
 }
 
 static inline void tar_load(const char* rt,const char* offset,const char* rs ,int size)
