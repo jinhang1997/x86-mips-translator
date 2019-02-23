@@ -17,6 +17,7 @@ void dump_main(char *bin_file_name);
 #define MAX_LINE_BUF 64
 #define MAX_COMMAND_BUF 256
 #define MAX_LABEL_CAPACITY 256
+#define MAX_FUNC_HISTORY 64
 
 typedef struct
 {
