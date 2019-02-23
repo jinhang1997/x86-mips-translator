@@ -14,8 +14,8 @@ void trans_call(char *mode, char *argus[], char *suffix)
   fprintf(fp_out, "  .option pic0\n");
   fprintf(fp_out, "  jal %s\n", argus[0]);
   fprintf(fp_out, "  .option pic2\n");
-  tar_addi("$sp", "$sp", "4");
   tar_load("$ra", "0", "$sp", 4);
+  tar_addi("$sp", "$sp", "4");
 }
 /*
 void trans_push_r(char *reg)

@@ -52,6 +52,7 @@ void trans_add_mr(char * addr,char * reg, int size)
 	int idx = get_reg_index(reg);
 	tar_add(mips_regs_name[idx],mips_regs_name[idx],"$t8");
 }
+
 void trans_add_im(char * imm,char * addr, int size)
 {
 	Log("%s",addr);
@@ -73,18 +74,6 @@ void trans_add_rm(char * reg,char * addr, int size)
 	tar_add("$t8",mips_regs_name[idx],"$t8");
 	tar_store("$t8", "0", mips_addr_src, size);
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

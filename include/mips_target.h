@@ -95,6 +95,7 @@ static inline void tar_store(const char* rt,const char* offset,const char* rs ,i
   fprintf(fp_out, "  s%s  %s,%s(%s)\n",mips_op_size[size],rt,offset,rs);
 }
 
+
 /*static inline void tar_loadu(const char* rt,const char* offset,const char* rs ,int size)
 {
   fprintf(fp_out, "  l%su  %s,%s(%s)\n",mips_op_size[size],rt,offset,rs);
