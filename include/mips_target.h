@@ -49,11 +49,42 @@ static inline void tar_sll(const char *rd,const char* rs, const char* rt)
 {
   fprintf(fp_out, "  sll  %s,%s,%s\n",rd,rs,rt); 
 }
+  static inline void tar_j (const char* instr_index)
+ {
+   fprintf(fp_out, "  j  %s\n",instr_index); 
+ }
+
  static inline void tar_jr(const char* rs)
 {
   fprintf(fp_out, "  jr  %s\n",rs); 
 }
- 
+
+
+ static inline void tar_bgtz(const char* rs,const char* offset)
+ {
+ 	fprintf(fp_out, "  bgtz  %s,%s\n",rs,offset); 
+ }
+  static inline void tar_bgez(const char* rs,const char* offset)
+ {
+ 	fprintf(fp_out, "  bgez  %s,%s\n",rs,offset); 
+ }
+   static inline void tar_bltz(const char* rs,const char* offset)
+ {
+ 	fprintf(fp_out, "  bltz  %s,%s\n",rs,offset); 
+ }
+    static inline void tar_blez(const char* rs,const char* offset)
+ {
+ 	fprintf(fp_out, "  blez  %s,%s\n",rs,offset); 
+ }
+	static inline void tar_beq(const char* rs,const char* rt,const char* offset)
+{
+	  fprintf(fp_out, "  beq  %s,%s,%s\n",rs,rt,offset); 
+}	
+	static inline void tar_bne(const char* rs,const char* rt,const char* offset)
+{
+	  fprintf(fp_out, "  bne  %s,%s\n",rs,rt,offset); 
+}
+
 static inline void tar_load(const char* rt,const char* offset,const char* rs ,int size)
 {
   fprintf(fp_out, "  l%s  %s,%s(%s)\n",mips_op_size[size],rt,offset,rs);
@@ -64,10 +95,10 @@ static inline void tar_store(const char* rt,const char* offset,const char* rs ,i
   fprintf(fp_out, "  s%s  %s,%s(%s)\n",mips_op_size[size],rt,offset,rs);
 }
 
-static inline void tar_loadu(const char* rt,const char* offset,const char* rs ,int size)
+/*static inline void tar_loadu(const char* rt,const char* offset,const char* rs ,int size)
 {
   fprintf(fp_out, "  l%su  %s,%s(%s)\n",mips_op_size[size],rt,offset,rs);
-}
+}*/
  
 static inline void tar_regaddoff(const char *reg,const char* offset)  // get the code of reg=reg+offset
 {
