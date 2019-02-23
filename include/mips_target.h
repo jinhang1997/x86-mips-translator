@@ -82,7 +82,7 @@ static inline void tar_sll(const char *rd,const char* rs, const char* rt)
 }	
 	static inline void tar_bne(const char* rs,const char* rt,const char* offset)
 {
-	  fprintf(fp_out, "  bne  %s,%s\n",rs,rt,offset); 
+	  fprintf(fp_out, "  bne  %s,%s,%s\n",rs,rt,offset); 
 }
 
 static inline void tar_load(const char* rt,const char* offset,const char* rs ,int size)

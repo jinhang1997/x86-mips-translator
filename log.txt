@@ -1,0 +1,450 @@
+./build/xmt ./tests/rec100/rec100
+File: ./tests/rec100/rec100
+Identification: 7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 
+Section header offset: 6208
+Size of each section header: 40
+Number of section headers: 6208
+Index of names of section headers: 30
+
+Section headers:
+  [Nr] Name                 Type           Address  Offset   Size    
+  [ 0]                      NULL           00000000 00000000 00000000
+  [ 1] .interp              PROGBITS       00000154 00000154 00000013
+  [ 2] .note.ABI-tag        NOTE           00000168 00000168 00000020
+  [ 3] .note.gnu.build-id   NOTE           00000188 00000188 00000024
+  [ 4] .gnu.hash            <OTHER>        000001ac 000001ac 00000024
+  [ 5] .dynsym              DYNSYM         000001d0 000001d0 00000090
+  [ 6] .dynstr              STRTAB         00000260 00000260 000000aa
+  [ 7] .gnu.version         <OTHER>        0000030a 0000030a 00000012
+  [ 8] .gnu.version_r       <OTHER>        0000031c 0000031c 00000030
+  [ 9] .rel.dyn             REL            0000034c 0000034c 00000048
+  [10] .rel.plt             REL            00000394 00000394 00000008
+  [11] .init                PROGBITS       0000039c 0000039c 00000023
+  [12] .plt                 PROGBITS       000003c0 000003c0 00000020
+  [13] .plt.got             PROGBITS       000003e0 000003e0 00000010
+  [14] .text                PROGBITS       000003f0 000003f0 00000262
+  [15] .fini                PROGBITS       00000654 00000654 00000014
+  [16] .rodata              PROGBITS       00000668 00000668 00000008
+  [17] .eh_frame_hdr        PROGBITS       00000670 00000670 00000044
+  [18] .eh_frame            PROGBITS       000006b4 000006b4 00000114
+  [19] .init_array          INIT_ARRAY     00001eec 00000eec 00000004
+  [20] .fini_array          FINI_ARRAY     00001ef0 00000ef0 00000004
+  [21] .jcr                 PROGBITS       00001ef4 00000ef4 00000004
+  [22] .dynamic             DYNAMIC        00001ef8 00000ef8 000000f0
+  [23] .got                 PROGBITS       00001fe8 00000fe8 00000018
+  [24] .got.plt             PROGBITS       00002000 00001000 00000010
+  [25] .data                PROGBITS       00002010 00001010 00000008
+  [26] .bss                 NOBITS         00002018 00001018 00000004
+  [27] .comment             PROGBITS       00000000 00001018 0000002d
+  [28] .symtab              SYMTAB         00000000 00001048 00000480
+  [29] .strtab              STRTAB         00000000 000014c8 0000026e
+  [30] .shstrtab            STRTAB         00000000 00001736 0000010a
+
+Symbol table '.symtab' contains 72 entries:
+   Num:    Value  Size Type     Ndx Name
+     0: 00000000     0 00000000   0 
+     1: 00000154     0 00000003   1 
+     2: 00000168     0 00000003   2 
+     3: 00000188     0 00000003   3 
+     4: 000001ac     0 00000003   4 
+     5: 000001d0     0 00000003   5 
+     6: 00000260     0 00000003   6 
+     7: 0000030a     0 00000003   7 
+     8: 0000031c     0 00000003   8 
+     9: 0000034c     0 00000003   9 
+    10: 00000394     0 00000003  10 
+    11: 0000039c     0 00000003  11 
+    12: 000003c0     0 00000003  12 
+    13: 000003e0     0 00000003  13 
+    14: 000003f0     0 00000003  14 
+    15: 00000654     0 00000003  15 
+    16: 00000668     0 00000003  16 
+    17: 00000670     0 00000003  17 
+    18: 000006b4     0 00000003  18 
+    19: 00001eec     0 00000003  19 
+    20: 00001ef0     0 00000003  20 
+    21: 00001ef4     0 00000003  21 
+    22: 00001ef8     0 00000003  22 
+    23: 00001fe8     0 00000003  23 
+    24: 00002000     0 00000003  24 
+    25: 00002010     0 00000003  25 
+    26: 00002018     0 00000003  26 
+    27: 00000000     0 00000003  27 
+    28: 00000000     0 00000004  -1 crtstuff.c
+    29: 00001ef4     0 00000001  21 __JCR_LIST__
+    30: 00000440     0 00000002  14 deregister_tm_clones
+    31: 00000480     0 00000002  14 register_tm_clones
+    32: 000004d0     0 00000002  14 __do_global_dtors_aux
+    33: 00002018     1 00000001  26 completed.6587
+    34: 00001ef0     0 00000001  20 __do_global_dtors_aux_fini_array_entry
+    35: 00000520     0 00000002  14 frame_dummy
+    36: 00001eec     0 00000001  19 __frame_dummy_init_array_entry
+    37: 00000000     0 00000004  -1 rec100.c
+    38: 00000000     0 00000004  -1 crtstuff.c
+    39: 000007c4     0 00000001  18 __FRAME_END__
+    40: 00001ef4     0 00000001  21 __JCR_END__
+    41: 00000000     0 00000004  -1 
+    42: 00001ef0     0 00000000  19 __init_array_end
+    43: 00001ef8     0 00000001  22 _DYNAMIC
+    44: 00001eec     0 00000000  19 __init_array_start
+    45: 00000670     0 00000000  17 __GNU_EH_FRAME_HDR
+    46: 00002000     0 00000001  24 _GLOBAL_OFFSET_TABLE_
+    47: 00000650     2 00000002  14 __libc_csu_fini
+    48: 00000000     0 00000000   0 _ITM_deregisterTMCloneTable
+    49: 00000430     4 00000002  14 __x86.get_pc_thunk.bx
+    50: 00002010     0 00000000  25 data_start
+    51: 00002018     0 00000000  25 _edata
+    52: 00000654     0 00000002  15 _fini
+    53: 0000055c     0 00000002  14 __x86.get_pc_thunk.dx
+    54: 00000000     0 00000002   0 __cxa_finalize@@GLIBC_2.1.3
+    55: 00002010     0 00000000  25 __data_start
+    56: 00000000     0 00000000   0 __gmon_start__
+    57: 00002014     0 00000001  25 __dso_handle
+    58: 0000066c     4 00000001  16 _IO_stdin_used
+    59: 00000000     0 00000002   0 __libc_start_main@@GLIBC_2.0
+    60: 000005f0    93 00000002  14 __libc_csu_init
+    61: 0000201c     0 00000000  26 _end
+    62: 000003f0     0 00000002  14 _start
+    63: 00000668     4 00000001  16 _fp_hw
+    64: 00002018     0 00000000  26 __bss_start
+    65: 00000598    72 00000002  14 main
+    66: 000005e0     0 00000002  14 __x86.get_pc_thunk.ax
+    67: 00000560    56 00000002  14 get_sum
+    68: 00000000     0 00000000   0 _Jv_RegisterClasses
+    69: 00002018     0 00000001  25 __TMC_END__
+    70: 00000000     0 00000000   0 _ITM_registerTMCloneTable
+    71: 0000039c     0 00000002  11 _init
+
+[1;34m[src/translate.c,208,init_output] mips assembly: ./dumps/out.S[0m
+[1;34m[src/dump.c,77,stk_func_push] push[0]: main[0m
+[1;34m[src/dump.c,90,stk_func_pop] pop[0]: main[0m
+[1;34m[src/dump.c,253,dump_main] main to dump[0m
+[1;34m[src/dump.c,233,dump_func] ./tests/rec100/rec100: 00000598 72 00000002 14 main[0m
+[1;34m[src/dump.c,112,call_objdump] objdump ./tests/rec100/rec100 -d --no-show-raw-insn --start-address=0x598 --stop-address=0x5e0 > ./dumps/main.dump[0m
+[1;34m[src/dump.c,115,call_objdump] sed -i '1,7d' ./dumps/main.dump[0m
+[1;34m[src/dump.c,256,dump_main] ./dumps/main.dump to scan[0m
+[1;34m[src/dump.c,172,scan_file] scanning file: ./dumps/main.dump[0m
+[1;34m[src/dump.c,183,scan_file] 1st scan:[0m
+598 - lea - 0x4(%esp),%ecx - 
+59c - and - $0xfffffff0,%esp - 
+59f - pushl - -0x4(%ecx) - 
+5a2 - push - %ebp - 
+5a3 - mov - %esp,%ebp - 
+5a5 - push - %ecx - 
+5a6 - sub - $0x14,%esp - 
+5a9 - call - 5e0 - __x86.get_pc_thunk.ax
+5ae - add - $0x1a52,%eax - 
+5b3 - sub - $0xc,%esp - 
+5b6 - push - $0x64 - 
+5b8 - call - 560 - get_sum
+5bd - add - $0x10,%esp - 
+5c0 - mov - %eax,-0xc(%ebp) - 
+5c3 - cmpl - $0x13ba,-0xc(%ebp) - 
+5ca - je - 5d3 - main+0x3b
+[1;34m[src/dump.c,64,list_label_append] new label: $L0 at 5d3[0m
+5cc - mov - $0x7f,%eax - 
+5d1 - jmp - 5d8 - main+0x40
+[1;34m[src/dump.c,64,list_label_append] new label: $L1 at 5d8[0m
+5d3 - mov - $0x0,%eax - 
+5d8 - mov - -0x4(%ebp),%ecx - 
+5db - leave -  - 
+5dc - lea - -0x4(%ecx),%esp - 
+5df - ret -  - 
+[1;34m[src/dump.c,207,scan_file] 2nd scan:[0m
+598 - lea - 0x4(%esp),%ecx - 
+[1;34m[src/translate.c,260,trans_output] 0x4(%esp) (m)[0m
+[1;34m[src/translate.c,260,trans_output] %ecx (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: mr[0m
+59c - and - $0xfffffff0,%esp - 
+[1;34m[src/translate.c,260,trans_output] 0xfffffff0 (i)[0m
+[1;34m[src/translate.c,260,trans_output] %esp (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: ir[0m
+59f - pushl - -0x4(%ecx) - 
+[1;34m[src/translate.c,260,trans_output] -0x4(%ecx) (m)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: m[0m
+[1;34m[src/instr_push.c,7,trans_push] push worker[0m
+5a2 - push - %ebp - 
+[1;34m[src/translate.c,260,trans_output] %ebp (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: r[0m
+[1;34m[src/translate.c,286,trans_output] try call worker push with %ebp (null) (null) suf: [0m
+[1;34m[src/instr_push.c,7,trans_push] push worker[0m
+5a3 - mov - %esp,%ebp - 
+[1;34m[src/translate.c,260,trans_output] %esp (r)[0m
+[1;34m[src/translate.c,260,trans_output] %ebp (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: rr[0m
+[1;34m[src/translate.c,286,trans_output] try call worker mov with %esp %ebp (null) suf: [0m
+[1;34m[src/instr_mov.c,7,trans_mov] mov worker (suf: ) %esp -> %ebp[0m
+5a5 - push - %ecx - 
+[1;34m[src/translate.c,260,trans_output] %ecx (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: r[0m
+[1;34m[src/translate.c,286,trans_output] try call worker push with %ecx (null) (null) suf: [0m
+[1;34m[src/instr_push.c,7,trans_push] push worker[0m
+5a6 - sub - $0x14,%esp - 
+[1;34m[src/translate.c,260,trans_output] 0x14 (i)[0m
+[1;34m[src/translate.c,260,trans_output] %esp (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: ir[0m
+[1;34m[src/translate.c,286,trans_output] try call worker sub with 0x14 %esp (null) suf: [0m
+[1;34m[src/instr_sub.c,6,trans_sub] sub worker[0m
+5a9 - call - 5e0 - __x86.get_pc_thunk.ax
+[1;34m[src/dump.c,136,dump_control] func push control: __x86.get_pc_thunk.ax[0m
+[1;34m[src/dump.c,77,stk_func_push] push[0]: __x86.get_pc_thunk.ax[0m
+[1;34m[src/translate.c,260,trans_output] 5e0 (m)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: m[0m
+[1;34m[src/translate.c,286,trans_output] try call worker call with __x86.get_pc_thunk.ax (null) (null) suf: [0m
+[1;34m[src/instr_call.c,7,trans_call] call worker[0m
+5ae - add - $0x1a52,%eax - 
+[1;34m[src/translate.c,260,trans_output] 0x1a52 (i)[0m
+[1;34m[src/translate.c,260,trans_output] %eax (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: ir[0m
+[1;34m[src/translate.c,286,trans_output] try call worker add with 0x1a52 %eax (null) suf: [0m
+[1;34m[src/instr_add.c,7,trans_add] add worker[0m
+[1;34m[src/instr_add.c,8,trans_add] suf:[0m
+5b3 - sub - $0xc,%esp - 
+[1;34m[src/translate.c,260,trans_output] 0xc (i)[0m
+[1;34m[src/translate.c,260,trans_output] %esp (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: ir[0m
+[1;34m[src/translate.c,286,trans_output] try call worker sub with 0xc %esp (null) suf: [0m
+[1;34m[src/instr_sub.c,6,trans_sub] sub worker[0m
+5b6 - push - $0x64 - 
+[1;34m[src/translate.c,260,trans_output] 0x64 (i)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: i[0m
+[1;34m[src/translate.c,286,trans_output] try call worker push with 0x64 (null) (null) suf: [0m
+[1;34m[src/instr_push.c,7,trans_push] push worker[0m
+5b8 - call - 560 - get_sum
+[1;34m[src/dump.c,136,dump_control] func push control: get_sum[0m
+[1;34m[src/dump.c,77,stk_func_push] push[1]: get_sum[0m
+[1;34m[src/translate.c,260,trans_output] 560 (m)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: m[0m
+[1;34m[src/translate.c,286,trans_output] try call worker call with get_sum (null) (null) suf: [0m
+[1;34m[src/instr_call.c,7,trans_call] call worker[0m
+5bd - add - $0x10,%esp - 
+[1;34m[src/translate.c,260,trans_output] 0x10 (i)[0m
+[1;34m[src/translate.c,260,trans_output] %esp (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: ir[0m
+[1;34m[src/translate.c,286,trans_output] try call worker add with 0x10 %esp (null) suf: [0m
+[1;34m[src/instr_add.c,7,trans_add] add worker[0m
+[1;34m[src/instr_add.c,8,trans_add] suf:[0m
+5c0 - mov - %eax,-0xc(%ebp) - 
+[1;34m[src/translate.c,260,trans_output] %eax (r)[0m
+[1;34m[src/translate.c,260,trans_output] -0xc(%ebp) (m)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: rm[0m
+[1;34m[src/translate.c,286,trans_output] try call worker mov with %eax -0xc(%ebp) (null) suf: [0m
+[1;34m[src/instr_mov.c,7,trans_mov] mov worker (suf: ) %eax -> -0xc(%ebp)[0m
+[1;34m[src/translate.c,95,tar_getaddr] pos is: 5,len is: 10[0m
+[1;34m[src/translate.c,102,tar_getaddr] # %ebp
+[0m
+5c3 - cmpl - $0x13ba,-0xc(%ebp) - 
+[1;34m[src/translate.c,260,trans_output] 0x13ba (i)[0m
+[1;34m[src/translate.c,260,trans_output] -0xc(%ebp) (m)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: im[0m
+[1;34m[src/instr_cmp.c,6,trans_cmp] cmp worker[0m
+[1;34m[src/translate.c,95,tar_getaddr] pos is: 5,len is: 10[0m
+[1;34m[src/translate.c,102,tar_getaddr] # %ebp
+[0m
+5ca - je - 5d3 - main+0x3b
+[1;34m[src/translate.c,260,trans_output] 5d3 (m)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: m[0m
+[1;34m[src/translate.c,286,trans_output] try call worker je with $L0 (null) (null) suf: [0m
+5cc - mov - $0x7f,%eax - 
+[1;34m[src/translate.c,260,trans_output] 0x7f (i)[0m
+[1;34m[src/translate.c,260,trans_output] %eax (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: ir[0m
+[1;34m[src/translate.c,286,trans_output] try call worker mov with 0x7f %eax (null) suf: [0m
+[1;34m[src/instr_mov.c,7,trans_mov] mov worker (suf: ) 0x7f -> %eax[0m
+5d1 - jmp - 5d8 - main+0x40
+[1;34m[src/translate.c,260,trans_output] 5d8 (m)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: m[0m
+[1;34m[src/translate.c,286,trans_output] try call worker jmp with $L1 (null) (null) suf: [0m
+[1;34m[src/instr_jmp.c,6,trans_jmp] $L1[0m
+5d3 - mov - $0x0,%eax - 
+[1;34m[src/translate.c,260,trans_output] 0x0 (i)[0m
+[1;34m[src/translate.c,260,trans_output] %eax (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: ir[0m
+[1;34m[src/translate.c,286,trans_output] try call worker mov with 0x0 %eax (null) suf: [0m
+[1;34m[src/instr_mov.c,7,trans_mov] mov worker (suf: ) 0x0 -> %eax[0m
+5d8 - mov - -0x4(%ebp),%ecx - 
+[1;34m[src/translate.c,260,trans_output] -0x4(%ebp) (m)[0m
+[1;34m[src/translate.c,260,trans_output] %ecx (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: mr[0m
+[1;34m[src/translate.c,286,trans_output] try call worker mov with -0x4(%ebp) %ecx (null) suf: [0m
+[1;34m[src/instr_mov.c,7,trans_mov] mov worker (suf: ) -0x4(%ebp) -> %ecx[0m
+[1;34m[src/translate.c,95,tar_getaddr] pos is: 5,len is: 10[0m
+[1;34m[src/translate.c,102,tar_getaddr] # %ebp
+[0m
+5db - leave -  - 
+[1;34m[src/translate.c,262,trans_output] mode_type: [0m
+[1;34m[src/translate.c,286,trans_output] try call worker leave with (null) (null) (null) suf: [0m
+5dc - lea - -0x4(%ecx),%esp - 
+[1;34m[src/translate.c,260,trans_output] -0x4(%ecx) (m)[0m
+[1;34m[src/translate.c,260,trans_output] %esp (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: mr[0m
+5df - ret -  - 
+[1;34m[src/translate.c,262,trans_output] mode_type: [0m
+[1;34m[src/translate.c,286,trans_output] try call worker ret with (null) (null) (null) suf: [0m
+[1;34m[src/dump.c,35,func_history_append] add hisrory[0]: main[0m
+[1;34m[src/dump.c,90,stk_func_pop] pop[1]: get_sum[0m
+[1;34m[src/dump.c,253,dump_main] get_sum to dump[0m
+[1;34m[src/dump.c,233,dump_func] ./tests/rec100/rec100: 00000560 56 00000002 14 get_sum[0m
+[1;34m[src/dump.c,112,call_objdump] objdump ./tests/rec100/rec100 -d --no-show-raw-insn --start-address=0x560 --stop-address=0x598 > ./dumps/get_sum.dump[0m
+[1;34m[src/dump.c,115,call_objdump] sed -i '1,7d' ./dumps/get_sum.dump[0m
+[1;34m[src/dump.c,256,dump_main] ./dumps/get_sum.dump to scan[0m
+[1;34m[src/dump.c,172,scan_file] scanning file: ./dumps/get_sum.dump[0m
+[1;34m[src/dump.c,183,scan_file] 1st scan:[0m
+560 - push - %ebp - 
+561 - mov - %esp,%ebp - 
+563 - sub - $0x8,%esp - 
+566 - call - 5e0 - __x86.get_pc_thunk.ax
+56b - add - $0x1a95,%eax - 
+570 - cmpl - $0x0,0x8(%ebp) - 
+574 - jne - 57d - get_sum+0x1d
+[1;34m[src/dump.c,64,list_label_append] new label: $L2 at 57d[0m
+576 - mov - $0x0,%eax - 
+57b - jmp - 596 - get_sum+0x36
+[1;34m[src/dump.c,64,list_label_append] new label: $L3 at 596[0m
+57d - mov - 0x8(%ebp),%eax - 
+580 - sub - $0x1,%eax - 
+583 - sub - $0xc,%esp - 
+586 - push - %eax - 
+587 - call - 560 - get_sum
+58c - add - $0x10,%esp - 
+58f - mov - %eax,%edx - 
+591 - mov - 0x8(%ebp),%eax - 
+594 - add - %edx,%eax - 
+596 - leave -  - 
+597 - ret -  - 
+[1;34m[src/dump.c,207,scan_file] 2nd scan:[0m
+560 - push - %ebp - 
+[1;34m[src/translate.c,260,trans_output] %ebp (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: r[0m
+[1;34m[src/translate.c,286,trans_output] try call worker push with %ebp (null) (null) suf: [0m
+[1;34m[src/instr_push.c,7,trans_push] push worker[0m
+561 - mov - %esp,%ebp - 
+[1;34m[src/translate.c,260,trans_output] %esp (r)[0m
+[1;34m[src/translate.c,260,trans_output] %ebp (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: rr[0m
+[1;34m[src/translate.c,286,trans_output] try call worker mov with %esp %ebp (null) suf: [0m
+[1;34m[src/instr_mov.c,7,trans_mov] mov worker (suf: ) %esp -> %ebp[0m
+563 - sub - $0x8,%esp - 
+[1;34m[src/translate.c,260,trans_output] 0x8 (i)[0m
+[1;34m[src/translate.c,260,trans_output] %esp (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: ir[0m
+[1;34m[src/translate.c,286,trans_output] try call worker sub with 0x8 %esp (null) suf: [0m
+[1;34m[src/instr_sub.c,6,trans_sub] sub worker[0m
+566 - call - 5e0 - __x86.get_pc_thunk.ax
+[1;34m[src/dump.c,136,dump_control] func push control: __x86.get_pc_thunk.ax[0m
+[1;34m[src/dump.c,77,stk_func_push] push[1]: __x86.get_pc_thunk.ax[0m
+[1;34m[src/translate.c,260,trans_output] 5e0 (m)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: m[0m
+[1;34m[src/translate.c,286,trans_output] try call worker call with __x86.get_pc_thunk.ax (null) (null) suf: [0m
+[1;34m[src/instr_call.c,7,trans_call] call worker[0m
+56b - add - $0x1a95,%eax - 
+[1;34m[src/translate.c,260,trans_output] 0x1a95 (i)[0m
+[1;34m[src/translate.c,260,trans_output] %eax (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: ir[0m
+[1;34m[src/translate.c,286,trans_output] try call worker add with 0x1a95 %eax (null) suf: [0m
+[1;34m[src/instr_add.c,7,trans_add] add worker[0m
+[1;34m[src/instr_add.c,8,trans_add] suf:[0m
+570 - cmpl - $0x0,0x8(%ebp) - 
+[1;34m[src/translate.c,260,trans_output] 0x0 (i)[0m
+[1;34m[src/translate.c,260,trans_output] 0x8(%ebp) (m)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: im[0m
+[1;34m[src/instr_cmp.c,6,trans_cmp] cmp worker[0m
+[1;34m[src/translate.c,95,tar_getaddr] pos is: 4,len is: 9[0m
+[1;34m[src/translate.c,102,tar_getaddr] # %ebp
+[0m
+574 - jne - 57d - get_sum+0x1d
+[1;34m[src/translate.c,260,trans_output] 57d (m)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: m[0m
+[1;34m[src/translate.c,286,trans_output] try call worker jne with $L2 (null) (null) suf: [0m
+576 - mov - $0x0,%eax - 
+[1;34m[src/translate.c,260,trans_output] 0x0 (i)[0m
+[1;34m[src/translate.c,260,trans_output] %eax (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: ir[0m
+[1;34m[src/translate.c,286,trans_output] try call worker mov with 0x0 %eax (null) suf: [0m
+[1;34m[src/instr_mov.c,7,trans_mov] mov worker (suf: ) 0x0 -> %eax[0m
+57b - jmp - 596 - get_sum+0x36
+[1;34m[src/translate.c,260,trans_output] 596 (m)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: m[0m
+[1;34m[src/translate.c,286,trans_output] try call worker jmp with $L3 (null) (null) suf: [0m
+[1;34m[src/instr_jmp.c,6,trans_jmp] $L3[0m
+57d - mov - 0x8(%ebp),%eax - 
+[1;34m[src/translate.c,260,trans_output] 0x8(%ebp) (m)[0m
+[1;34m[src/translate.c,260,trans_output] %eax (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: mr[0m
+[1;34m[src/translate.c,286,trans_output] try call worker mov with 0x8(%ebp) %eax (null) suf: [0m
+[1;34m[src/instr_mov.c,7,trans_mov] mov worker (suf: ) 0x8(%ebp) -> %eax[0m
+[1;34m[src/translate.c,95,tar_getaddr] pos is: 4,len is: 9[0m
+[1;34m[src/translate.c,102,tar_getaddr] # %ebp
+[0m
+580 - sub - $0x1,%eax - 
+[1;34m[src/translate.c,260,trans_output] 0x1 (i)[0m
+[1;34m[src/translate.c,260,trans_output] %eax (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: ir[0m
+[1;34m[src/translate.c,286,trans_output] try call worker sub with 0x1 %eax (null) suf: [0m
+[1;34m[src/instr_sub.c,6,trans_sub] sub worker[0m
+583 - sub - $0xc,%esp - 
+[1;34m[src/translate.c,260,trans_output] 0xc (i)[0m
+[1;34m[src/translate.c,260,trans_output] %esp (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: ir[0m
+[1;34m[src/translate.c,286,trans_output] try call worker sub with 0xc %esp (null) suf: [0m
+[1;34m[src/instr_sub.c,6,trans_sub] sub worker[0m
+586 - push - %eax - 
+[1;34m[src/translate.c,260,trans_output] %eax (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: r[0m
+[1;34m[src/translate.c,286,trans_output] try call worker push with %eax (null) (null) suf: [0m
+[1;34m[src/instr_push.c,7,trans_push] push worker[0m
+587 - call - 560 - get_sum
+[1;34m[src/dump.c,136,dump_control] func push control: get_sum[0m
+[1;34m[src/dump.c,77,stk_func_push] push[2]: get_sum[0m
+[1;34m[src/translate.c,260,trans_output] 560 (m)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: m[0m
+[1;34m[src/translate.c,286,trans_output] try call worker call with get_sum (null) (null) suf: [0m
+[1;34m[src/instr_call.c,7,trans_call] call worker[0m
+58c - add - $0x10,%esp - 
+[1;34m[src/translate.c,260,trans_output] 0x10 (i)[0m
+[1;34m[src/translate.c,260,trans_output] %esp (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: ir[0m
+[1;34m[src/translate.c,286,trans_output] try call worker add with 0x10 %esp (null) suf: [0m
+[1;34m[src/instr_add.c,7,trans_add] add worker[0m
+[1;34m[src/instr_add.c,8,trans_add] suf:[0m
+58f - mov - %eax,%edx - 
+[1;34m[src/translate.c,260,trans_output] %eax (r)[0m
+[1;34m[src/translate.c,260,trans_output] %edx (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: rr[0m
+[1;34m[src/translate.c,286,trans_output] try call worker mov with %eax %edx (null) suf: [0m
+[1;34m[src/instr_mov.c,7,trans_mov] mov worker (suf: ) %eax -> %edx[0m
+591 - mov - 0x8(%ebp),%eax - 
+[1;34m[src/translate.c,260,trans_output] 0x8(%ebp) (m)[0m
+[1;34m[src/translate.c,260,trans_output] %eax (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: mr[0m
+[1;34m[src/translate.c,286,trans_output] try call worker mov with 0x8(%ebp) %eax (null) suf: [0m
+[1;34m[src/instr_mov.c,7,trans_mov] mov worker (suf: ) 0x8(%ebp) -> %eax[0m
+[1;34m[src/translate.c,95,tar_getaddr] pos is: 4,len is: 9[0m
+[1;34m[src/translate.c,102,tar_getaddr] # %ebp
+[0m
+594 - add - %edx,%eax - 
+[1;34m[src/translate.c,260,trans_output] %edx (r)[0m
+[1;34m[src/translate.c,260,trans_output] %eax (r)[0m
+[1;34m[src/translate.c,262,trans_output] mode_type: rr[0m
+[1;34m[src/translate.c,286,trans_output] try call worker add with %edx %eax (null) suf: [0m
+[1;34m[src/instr_add.c,7,trans_add] add worker[0m
+[1;34m[src/instr_add.c,8,trans_add] suf:[0m
+596 - leave -  - 
+[1;34m[src/translate.c,262,trans_output] mode_type: [0m
+[1;34m[src/translate.c,286,trans_output] try call worker leave with (null) (null) (null) suf: [0m
+597 - ret -  - 
+[1;34m[src/translate.c,262,trans_output] mode_type: [0m
+[1;34m[src/translate.c,286,trans_output] try call worker ret with (null) (null) (null) suf: [0m
+[1;34m[src/dump.c,35,func_history_append] add hisrory[1]: get_sum[0m
+[1;34m[src/dump.c,90,stk_func_pop] pop[2]: get_sum[0m
+[1;34m[src/dump.c,90,stk_func_pop] pop[1]: __x86.get_pc_thunk.ax[0m
+[1;34m[src/dump.c,253,dump_main] __x86.get_pc_thunk.ax to dump[0m
+[1;34m[src/dump.c,233,dump_func] ./tests/rec100/rec100: 000005e0 0 00000002 14 __x86.get_pc_thunk.ax[0m
+[1;34m[src/dump.c,112,call_objdump] objdump ./tests/rec100/rec100 -d --no-show-raw-insn --start-address=0x5e0 --stop-address=0x5e0 > ./dumps/__x86.get_pc_thunk.ax.dump[0m
+[1;34m[src/dump.c,115,call_objdump] sed -i '1,7d' ./dumps/__x86.get_pc_thunk.ax.dump[0m
+[1;34m[src/dump.c,256,dump_main] ./dumps/__x86.get_pc_thunk.ax.dump to scan[0m
+[1;34m[src/dump.c,172,scan_file] scanning file: ./dumps/__x86.get_pc_thunk.ax.dump[0m
+[1;34m[src/dump.c,183,scan_file] 1st scan:[0m
+[1;34m[src/dump.c,207,scan_file] 2nd scan:[0m
+[1;34m[src/dump.c,35,func_history_append] add hisrory[2]: __x86.get_pc_thunk.ax[0m
+[1;34m[src/dump.c,90,stk_func_pop] pop[0]: __x86.get_pc_thunk.ax[0m
