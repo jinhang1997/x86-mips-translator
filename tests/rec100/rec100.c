@@ -4,7 +4,7 @@ int get_sum(int n)
   {
     return 0;
   }
-  reuturn n + get_sum(n - 1);
+  return n + get_sum(n - 1);
 }
 
 int main()
