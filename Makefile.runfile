@@ -1,2 +1,2 @@
 
-RUNFILE := $(TESTS_DIR)/putchar/putchar
+RUNFILE := $(TESTS_DIR)/nuaa/nuaa

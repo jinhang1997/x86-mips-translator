@@ -70,7 +70,9 @@ void trans_call_plt(char *mode, char *argus[], char *suffix)
   // MUST load the address into $t9 and `jal $t9`
   fprintf(fp_out, "  lw  $v0,%%call16(%s)($gp)\n", func_name);
   tar_movr2r("$t9", "$v0");
+  fprintf(fp_out, "  .option pic0\n");
   fprintf(fp_out, "  jal $t9\n");
+  fprintf(fp_out, "  .option pic2\n");
   // rewind all general registers
   tx[2] = sx[2] = '0';
   for (i=0; i<8; i++)
