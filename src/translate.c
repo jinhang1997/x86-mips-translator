@@ -241,6 +241,7 @@ void trans_output(char *label, char *instr, char *argus, char *extra)
   int instr_len = strlen(instr), count_argu = 0;
   int i, flag;
 
+  Log("output given: %s %s %s %s", label, instr, argus, extra);
   // print jump label
   if (label)
   {
@@ -260,6 +261,10 @@ void trans_output(char *label, char *instr, char *argus, char *extra)
     mode_type[count_argu] = get_opnd_type(p_argus[count_argu]);
     if ('i' == mode_type[count_argu])
     {
+      // TODO: oprand is immediate, judge address or variable
+      // address in .bss .data .rodata -> save label
+      // variable keeps as it is
+      //p_argus[count_argu]
       p_argus[count_argu] = p_argus[count_argu] + 1;
     }
     Log("%s (%c)", p_argus[count_argu], mode_type[count_argu]);
@@ -327,5 +332,6 @@ void trans_output(char *label, char *instr, char *argus, char *extra)
       }
     }
   }
+  Assert(flag, "instr %s is not implemented yet.", instr);
 }
 

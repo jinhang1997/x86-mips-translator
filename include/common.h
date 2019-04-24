@@ -12,4 +12,6 @@ typedef uint8_t bool;
 #define true 1
 #define false 0
 
+char *strreplace(char *str,char *oldstr,char *newstr);
+
 #endif

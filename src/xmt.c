@@ -2,6 +2,26 @@
 #include "common.h"
 #include "xmt.h"
 
+char *strreplace(char *str, char *oldstr, char *newstr)
+{
+  char *bstr = (char *)malloc(strlen(str));
+  memset(bstr, 0, sizeof(bstr));
+  for(int i = 0;i < strlen(str);i++)
+  {
+    if(!strncmp(str+i, oldstr, strlen(oldstr)))
+    {
+      strcat(bstr,newstr);
+      i += strlen(oldstr) - 1;
+    }
+    else
+    {
+      strncat(bstr, str + i,1);
+    }
+  }
+  strcpy(str,bstr);
+  return str;
+}
+
 void error(int errid, char const *word)
 {
   printf("\nfatal error %d: ", errid);

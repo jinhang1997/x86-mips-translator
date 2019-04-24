@@ -149,7 +149,7 @@ void dump_control(uint32_t func_addr, char *instr, char *argus, char *extra)
       if (!strcmp(extra, "__stack_chk_fail@plt"))
       {
         // ignore the stack overflow check and output it as `nop` instead
-        trans_output(label, "nop", NULL, NULL);
+        trans_output(label, "nop", "", NULL);
       }
       else
       {
@@ -171,6 +171,7 @@ void dump_control(uint32_t func_addr, char *instr, char *argus, char *extra)
   else
   {
     // other instrucations
+    strreplace(argus, "%gs:0x14", "$0x14");
     trans_output(label, instr, argus, extra);
     return;
   }

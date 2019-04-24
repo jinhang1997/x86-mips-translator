@@ -50,6 +50,14 @@ void trans_sub_mr(char * addr,char * reg, int size);
 void trans_sub_im(char * imm,char * addr, int size);
 void trans_sub_rm(char * imm,char * addr, int size);
 
+/* xor */
+void trans_xor(char *mode, char *argus[], char *suffix);
+void trans_xor_rr(char * reg1,char * reg2);
+void trans_xor_ir(char * imm,char * reg);
+void trans_xor_mr(char * addr,char * reg, int size);
+void trans_xor_im(char * imm,char * addr, int size);
+void trans_xor_rm(char * imm,char * addr, int size);
+
 /* cmp */
 void trans_cmp(char *mode, char *argus[], char *suffix);
 void trans_cmp_rr(char * reg1,char * reg2);

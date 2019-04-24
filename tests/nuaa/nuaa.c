@@ -8,7 +8,7 @@ int main()
     putchar('*');
   }
   putchar('\n');
-  putchar('*');
+  putchar('*');q
   putchar(' ');
   putchar('N');
   putchar('U');
