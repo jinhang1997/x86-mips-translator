@@ -11,6 +11,8 @@ const Instr_Table_Entry x86_instr_table[] = {
   { "call", trans_call },
   { "add",trans_add },
   { "sub",trans_sub },
+  { "and",trans_and },
+  { "xor",trans_xor },
   { "leave",trans_leave},
   {	"jmp",trans_jmp},
   { "cmp",trans_cmp},
@@ -18,7 +20,9 @@ const Instr_Table_Entry x86_instr_table[] = {
   {	"jc",trans_jc},{"jb",trans_jb},{"jnae",trans_jnae},{"jna",trans_jna},{"jg",trans_jg},
   {	"jnle",trans_jnle},{"jge",trans_jge},{"jnl",trans_jnl},{"jl",trans_jl},{"jnge",trans_jnge},
   {	"jle",trans_jle},{"jng",trans_jng},{"jbe",trans_jbe},{"je",trans_je},{"jz",trans_jz},
-  {	"jne",trans_jne},{"jnz",trans_jnz},{ "and",trans_and },{ "lea",trans_lea },
+  {	"jne",trans_jne},{"jnz",trans_jnz},
+  { "lea",trans_lea },
+  { "nop",trans_nop },
 };
 const char *x86_regs_name[] = { "%eax", "%ecx", "%edx", "%ebx", "%esp", "%ebp", "%esi", "%edi" };
 const char *mips_regs_name[] = { "$t0", "$t1", "$t2", "$t3", "$sp", "$t5", "$t6", "$t7" };

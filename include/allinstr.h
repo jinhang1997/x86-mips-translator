@@ -106,7 +106,7 @@ void trans_je(char *mode, char *argus[], char *suffix);
 void trans_jnz(char *mode, char *argus[], char *suffix);
 void trans_jne(char *mode, char *argus[], char *suffix);
 
-
-
+/* nop */
+void trans_nop(char *mode, char *argus[], char *suffix);
 
 #endif

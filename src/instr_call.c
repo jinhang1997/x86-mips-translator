@@ -57,8 +57,8 @@ void trans_call_plt(char *mode, char *argus[], char *suffix)
   fprintf(fp_out, "  lui  $gp,%%hi(__gnu_local_gp)\n");
   fprintf(fp_out, "  addiu  $gp,$gp,%%lo(__gnu_local_gp)\n");
   // push to protect global pointer
-  tar_addi("$sp", "$sp", "-4");
-  tar_store("$gp", "0", "$sp", 4);
+  /*tar_addi("$sp", "$sp", "-4");
+  tar_store("$gp", "0", "$sp", 4);*/
   // save all general registers
   for (i=0; i<8; i++)
   {
@@ -82,8 +82,8 @@ void trans_call_plt(char *mode, char *argus[], char *suffix)
     ++tx[2];
   }
   // pop global pointer
-  tar_load("$gp", "0", "$sp", 4);
-  tar_addi("$sp", "$sp", "4");
+  /*tar_load("$gp", "0", "$sp", 4);
+  tar_addi("$sp", "$sp", "4");*/
   // move return value in $v0 to $t0
   tar_movr2r("$t0", "$v0");
   // pop old $ra

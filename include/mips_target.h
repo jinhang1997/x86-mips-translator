@@ -52,6 +52,15 @@ static inline void tar_andi(const char *rt,const char* rs, const char* imm)
 	fprintf(fp_out, "  andi  %s,%s,%s\n",rt,rs,imm);  
 }
 
+static inline void tar_xor(const char *rd,const char* rs, const char* rt)
+{
+  fprintf(fp_out, "  xor  %s,%s,%s\n",rd,rs,rt);  
+}
+static inline void tar_xori(const char *rt,const char* rs, const char* imm)
+{
+  fprintf(fp_out, "  xori  %s,%s,%s\n",rt,rs,imm);  
+}
+
 
 static inline void tar_sll(const char *rd,const char* rs, const char* rt)
 {
