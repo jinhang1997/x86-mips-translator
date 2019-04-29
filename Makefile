@@ -29,7 +29,7 @@ $(BUILD): $(OBJS)
 	@$(LD) $(LFLAGS) -o $@ $^
 
 # some convnient rules
-.PHONY: clean copy run app
+.PHONY: clean copy run app count
 
 # the file to analyze, in which $(RUNFILE) is defined
 include Makefile.runfile
@@ -44,6 +44,9 @@ run: $(BUILD)
 # $(RUN) is given in command line like: make app RUN=t1
 app: $(BUILD)
 	$(BUILD) $(TESTS_DIR)/$(RUN)/$(RUN)
+
+count: 
+	@find . -name "*.[c|h]" | xargs cat | wc -l
 
 # clean the project
 clean:
