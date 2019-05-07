@@ -10,6 +10,7 @@ int main(int argc, char *args[])
   char error[20] = "error! %d\n";
   char title[20] = "hello!";
   char file[20] = "hello.bmp";
+  char mode[10] = "rb";
    
   SDL_Window* window = NULL;
   SDL_Renderer* render = NULL;
@@ -36,7 +37,8 @@ int main(int argc, char *args[])
 
   //load image
   SDL_Surface* hello = NULL;
-  hello = SDL_LoadBMP(file);
+  puts(file);
+  hello = SDL_LoadBMP_RW(SDL_RWFromFile(file, mode), 1);
   if (hello == NULL)
   {
     printf(error, 3);

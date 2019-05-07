@@ -15,5 +15,5 @@ int main()
   {
     return 0x7f;
   }
-  return 0;
+  return 0x3f;
 }

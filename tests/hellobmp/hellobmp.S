@@ -1,7 +1,4 @@
 	.file	"hellobmp.c"
-	.section	.rodata
-.LC0:
-	.string	"rb"
 	.text
 	.globl	main
 	.type	main, @function
@@ -39,6 +36,9 @@ main:
 	movl	$112, -84(%ebp)
 	movl	$0, -80(%ebp)
 	movl	$0, -76(%ebp)
+	movl	$25202, -102(%ebp)
+	movl	$0, -98(%ebp)
+	movw	$0, -94(%ebp)
 	movl	$0, -20(%ebp)
 	movl	$0, -24(%ebp)
 	movl	$0, -28(%ebp)
@@ -83,8 +83,13 @@ main:
 	jmp	.L7
 .L4:
 	movl	$0, -32(%ebp)
+	subl	$12, %esp
+	leal	-92(%ebp), %eax
+	pushl	%eax
+	call	puts@PLT
+	addl	$16, %esp
 	subl	$8, %esp
-	leal	.LC0@GOTOFF(%ebx), %eax
+	leal	-102(%ebp), %eax
 	pushl	%eax
 	leal	-92(%ebp), %eax
 	pushl	%eax

@@ -58,7 +58,7 @@ main:
 	movl	$127, %eax
 	jmp	.L6
 .L5:
-	movl	$0, %eax
+	movl	$63, %eax
 .L6:
 	movl	-4(%ebp), %ecx
 	.cfi_def_cfa 1, 0
