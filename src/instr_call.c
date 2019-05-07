@@ -51,8 +51,8 @@ void trans_call_plt(char *mode, char *argus[], char *suffix)
   tar_load("$a2", "8", "$sp", 4);
   tar_load("$a3", "12", "$sp", 4);
   // push $ra into stack ot protect the return value
-  tar_addi("$sp", "$sp", "-4");
-  tar_store("$ra", "0", "$sp", 4);
+  //tar_addi("$sp", "$sp", "-4");
+  //tar_store("$ra", "0", "$sp", 4);
   // set global pointer
   fprintf(fp_out, "  lui  $gp,%%hi(__gnu_local_gp)\n");
   fprintf(fp_out, "  addiu  $gp,$gp,%%lo(__gnu_local_gp)\n");
@@ -87,6 +87,6 @@ void trans_call_plt(char *mode, char *argus[], char *suffix)
   // move return value in $v0 to $t0
   tar_movr2r("$t0", "$v0");
   // pop old $ra
-  tar_load("$ra", "0", "$sp", 4);
-  tar_addi("$sp", "$sp", "4");
+  //tar_load("$ra", "0", "$sp", 4);
+  //tar_addi("$sp", "$sp", "4");
 }
