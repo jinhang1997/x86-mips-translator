@@ -62,7 +62,15 @@ void trans_call_plt(char *mode, char *argus[], char *suffix)
   // save all general registers
   for (i=0; i<8; i++)
   {
-    tar_movr2r(sx, tx);
+    if (i == 4)
+    {
+      // protect ra in $s4
+      tar_movr2r(sx, "$ra");
+    }
+    else
+    {
+      tar_movr2r(sx, tx);
+    }
     ++sx[2];
     ++tx[2];
   }
@@ -77,7 +85,15 @@ void trans_call_plt(char *mode, char *argus[], char *suffix)
   tx[2] = sx[2] = '0';
   for (i=0; i<8; i++)
   {
-    tar_movr2r(tx, sx);
+    if (i == 4)
+    {
+      // rewind ra from $s4
+      tar_movr2r("$ra", sx);
+    }
+    else
+    {
+      tar_movr2r(tx, sx);
+    }
     ++sx[2];
     ++tx[2];
   }
