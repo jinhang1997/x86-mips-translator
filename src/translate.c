@@ -25,7 +25,7 @@ const Instr_Table_Entry x86_instr_table[] = {
   { "nop",trans_nop },
 };
 const char *x86_regs_name[] = { "%eax", "%ecx", "%edx", "%ebx", "%esp", "%ebp", "%esi", "%edi" };
-const char *mips_regs_name[] = { "$t0", "$t1", "$t2", "$t3", "$sp", "$t5", "$t6", "$t7" };
+const char *mips_regs_name[] = { "$s0", "$s1", "$s2", "$s3", "$sp", "$s5", "$s6", "$s7" };
 const char *opnd_type_name[] = { "OPND_NONE", "OPND_REG", "OPND_IMM", "OPND_MEM" };
 const char *mode_type_name[] = { "", "r", "m", "i", "rr", "rm", "mr", "mm", "ir", "im"};
 const char *regsl[] = { "eax", "ecx", "edx", "ebx", "esp", "ebp", "esi", "edi" };
@@ -59,7 +59,7 @@ void get_reg_val(const char *s, bool *success, char *mips_reg)
 	     return;
      }
       mips_reg[0]='$';
-      mips_reg[1]='t';
+      mips_reg[1]='s';
       mips_reg[2]='0'+i;
       mips_reg[3]='\0';
       return;
